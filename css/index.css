@@ -1,0 +1,38 @@
+body {
+
+    font-family: "Comic Sans MS", "Comic Sans";
+}
+
+.nav{
+    float: left;
+    width: 20%;
+    text-align: center;
+    background-color: white;
+    border-right-style: solid;
+    border-right-width: 1px;
+    height: 100%;
+}
+
+.container-fluid {
+    background-color:#f0f0f5;
+}
+
+.dropdown {
+    float:right;
+}
+
+.nav-link {
+    width: 80%;
+    align-self: center;
+    color: darkgray;
+}
+.nav-link:hover {
+    color: red;
+}
+
+@media screen and (max-width: 1024px) {
+    .nav{
+        width: 30%;
+    }
+    
+}
