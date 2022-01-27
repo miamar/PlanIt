@@ -29,7 +29,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-6" style="margin-top: 1em;">
-               <p style="color: darkgray;">Student planner</p>
+               <p style="color: darkgray;">Moj profil</p>
             </div>
             <div class="col-6" style="margin-top: 1em;">
                 <div class="dropdown" style="float:right;">
@@ -54,24 +54,84 @@
                 <div class="card bg-light mb-3">
                     <div class="card-header"><h6>ToDo lista</h6></div>
                     <div class="card-body">
-                      <p class="card-text"><input type="checkbox" id="check" name="check"><label for="check"> Some quick example text <img src="x.svg" style="width: 0.75em;" ></label></p>
+                      <p class="card-text"><input type="checkbox" id="check" name="check"><label for="check"> Some quick example text <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal">
+                        <img src="plus.svg" style="width: 0.75em;" >
+                      </button></label>
+                      </p>
                       <hr>
-                      <p class="card-text"><input type="checkbox" id="check" name="check"><label for="check"> Some quick example text</label></p>
+                      <p class="card-text"><input type="checkbox" id="check" name="check"><label for="check"> Some quick example text <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal">
+                        <img src="plus.svg" style="width: 0.75em;" >
+                      </button></label></p>
                       <hr>
-                      <p class="card-text"><input type="checkbox" id="check" name="check"><label for="check"> Some quick example text</label></p>
+                      <p class="card-text"><input type="checkbox" id="check" name="check"><label for="check"> Some quick example text <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal">
+                        <img src="plus.svg" style="width: 0.75em;" >
+                      </button></label></p>
                       <hr>
-                      <p class="card-text"><input type="checkbox" id="check" name="check"><label for="check"> Some quick example text</label></p>
+                      <p class="card-text"><input type="checkbox" id="check" name="check"><label for="check"> Some quick example text <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal">
+                        <img src="plus.svg" style="width: 0.75em;" >
+                      </button></label></p>
                     </div>
                   </div>
+                  <div class="modal" id="myModal">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                  
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                          <h4 class="modal-title">Unos nove aktivnosti</h4>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                  
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                          <input type="novaAktivnost" class="form-control" id="novaAktivnost" style="border: 0;">
+                        </div>
+                  
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Spremi</button>
+                          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Zatvori</button>
+                        </div>
+                  
+                      </div>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-sm-6 col-12 d-flex justify-content-center" >
+              <div class="list-group">
+                <div class="list-group-item list-group-item-action flex-column align-items-start active">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Izvršene aktivnosti</h5>
+                  </div>
+                </div>
+                <div class="list-group-item list-group-item-action flex-column align-items-start">
+                  <div class="d-flex w-100 justify-content-between">
+                    <p class="mb-1">Ekonomika poslovanja</p>
+                    <small class="text-muted">Prije 3 dana</small>
+                  </div>
+                </div>
+                <div class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                      <p class="mb-1">Operacijska istraživanja</p>
+                      <small class="text-muted">Prije 6 dana</small>
+                    </div>
+                </div>
+                <div class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                      <p class="mb-1">Inteligentni sustavi</p>
+                      <small class="text-muted">Prije 10 dana</small>
+                    </div>
+                </div>
+              </div>
             </div>
 			<div class="col-sm-6 col-12 d-flex justify-content-center">
                 <!--  
 
                 -->
                   <div class="list-group">
-                    <div class="list-group-item list-group-item-action flex-column align-items-start active">
+                    <div class="list-group-item list-group-item-action flex-column align-items-start bg-success">
                       <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">Pregled prošlih aktivnosti po mjesecu</h5>
+                        <h5 class="mb-1" style="color:white;">Pregled prošlih aktivnosti po mjesecu</h5>
                       </div>
                     </div>
 					<br>
@@ -117,9 +177,9 @@
 
                 -->
                   <div class="list-group">
-                    <div class="list-group-item list-group-item-action flex-column align-items-start active">
+                    <div class="list-group-item list-group-item-action flex-column align-items-start bg-warning">
                       <div class="d-flex w-100 justify-content-between izvr-akt">
-                        <h5 class="mb-1">Pregled nadolazećih aktivnosti po mjesecu</h5>
+                        <h5 class="mb-1" style="color:white;">Pregled nadolazećih aktivnosti po mjesecu</h5>
                       </div>
                     </div>
 					<br>
