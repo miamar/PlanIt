@@ -9,13 +9,12 @@ body {
     background-color: white;
     border-right-style: solid;
     border-right-width: 1px;
-    height: 120vh;
+    height: 100vh;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .container-fluid {
     background-color:#f0f0f5;
-    height: 120vh;
 }
 
 .card {
