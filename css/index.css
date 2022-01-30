@@ -64,20 +64,35 @@ body {
     color: darkgray;
 }
 
+.footer {
+    display: none;
+}
+
 @media screen and (max-width: 1024px) {
     .nav{
-        width: 30%;
+        display: none;
     }
 
     .container-fluid {
         height: 300vh;
     }
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: white;
+        text-align: center;
+        display: inline;
+    
+}
     
 }
 
 izvr-akt {
 	background-color: yellow;
 }
+
 
 .box{
     padding: 5px;        
