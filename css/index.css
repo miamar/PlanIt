@@ -104,3 +104,7 @@ izvr-akt {
     border: 3px solid #666;
     margin-bottom: 20px;
 }
+
+table {
+    background-color: white;
+}
