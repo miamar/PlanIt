@@ -49,7 +49,7 @@
 			</div>
 			
 		</div>
-		<div class="row">
+		<div class="row" style="margin-bottom: 1em;">
             <div class="col-sm-6 col-12 d-flex justify-content-center" >
                 <div class="card bg-light mb-3">
                     <div class="card-header"><h6>ToDo lista</h6></div>
@@ -124,32 +124,37 @@
                 </div>
               </div>
             </div>
-			<div class="col-sm-6 col-12 d-flex justify-content-center">
-                <!--  
+            <!--  
 
                 -->
+			<div class="col-sm-6 col-12 d-flex justify-content-center">
                   <div class="list-group">
                     <div class="list-group-item list-group-item-action flex-column align-items-start bg-success">
                       <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1" style="color:white;">Pregled prošlih aktivnosti po mjesecu</h5>
                       </div>
                     </div>
-					<br>
 					<div class="list-group-item list-group-item-action flex-column align-items-start">
 						<div class="d-flex w-100 justify-content-between">
-						<div class="dropdown">
-							<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							  Mjesec
-							</button>
-							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-							  <a class="dropdown-item" href="#">Action</a>
-							  <a class="dropdown-item" href="#">Another action</a>
-							  <a class="dropdown-item" href="#">Something else here</a>
-							</div>
-						  </div>
+              <div class="dropdown">
+                <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown">Mjesec</button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" id="sijecanj">Siječanj</a></li>
+                  <li><a class="dropdown-item" id="veljaca">Veljača</a></li>
+                  <li><a class="dropdown-item" id="ozujak">Ožujak</a></li>
+                  <li><a class="dropdown-item" id="travanj">Travanj</a></li>
+                  <li><a class="dropdown-item" id="svibanj">Svibanj</a></li>
+                  <li><a class="dropdown-item" id="lipanj">Lipanj</a></li>
+                  <li><a class="dropdown-item" id="srpanj">Srpanj</a></li>
+                  <li><a class="dropdown-item" id="kolovoz">Kolovoz</a></li>
+                  <li><a class="dropdown-item" id="rujan">Rujan</a></li>
+                  <li><a class="dropdown-item" id="listopad">Listopad</a></li>
+                  <li><a class="dropdown-item" id="studeni">Studeni</a></li>
+                  <li><a class="dropdown-item" id="prosinac">Prosinac</a></li>
+                </ul>
+              </div>
 					</div>
 					</div>
-					<br>
                     <div class="list-group-item list-group-item-action flex-column align-items-start">
                       <div class="d-flex w-100 justify-content-between">
                         <p class="mb-1">Ekonomika poslovanja</p>
@@ -182,23 +187,27 @@
                         <h5 class="mb-1" style="color:white;">Pregled nadolazećih aktivnosti po mjesecu</h5>
                       </div>
                     </div>
-					<br>
 					<div class="list-group-item list-group-item-action flex-column align-items-start">
 						<div class="d-flex w-100 justify-content-between">
-						<div class="dropdown">
-							<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							  Mjesec
-							</button>
-							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-							  <a class="dropdown-item" href="#">Action</a>
-							  <a class="dropdown-item" href="#">Another action</a>
-							  <a class="dropdown-item" href="#">Something else here</a>
-							</div>
-						  </div>
+              <div class="dropdown">
+                <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown">Mjesec</button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" id="sijecanj">Siječanj</a></li>
+                  <li><a class="dropdown-item" id="veljaca">Veljača</a></li>
+                  <li><a class="dropdown-item" id="ozujak">Ožujak</a></li>
+                  <li><a class="dropdown-item" id="travanj">Travanj</a></li>
+                  <li><a class="dropdown-item" id="svibanj">Svibanj</a></li>
+                  <li><a class="dropdown-item" id="lipanj">Lipanj</a></li>
+                  <li><a class="dropdown-item" id="srpanj">Srpanj</a></li>
+                  <li><a class="dropdown-item" id="kolovoz">Kolovoz</a></li>
+                  <li><a class="dropdown-item" id="rujan">Rujan</a></li>
+                  <li><a class="dropdown-item" id="listopad">Listopad</a></li>
+                  <li><a class="dropdown-item" id="studeni">Studeni</a></li>
+                  <li><a class="dropdown-item" id="prosinac">Prosinac</a></li>
+                </ul>
+              </div>
 					</div>
-					</div>
-					<br>
-                    <div class="list-group-item list-group-item-action flex-column align-items-start">
+					</div>    <div class="list-group-item list-group-item-action flex-column align-items-start">
                       <div class="d-flex w-100 justify-content-between">
                         <p class="mb-1">Ekonomika poslovanja</p>
                         <small class="text-muted">Za 3 dana</small>
@@ -221,12 +230,9 @@
             </div>
         </div>
     </div>
-        
-
-    </div>
 
     <div class="footer">
-      <p><a href="index.html"><button type="button" class="btn" ><img src="home-fill.svg" style="width: 1em;"></button></a>
+      <p style="margin-top: 1em;"><a href="index.html"><button type="button" class="btn" ><img src="home-fill.svg" style="width: 1em;"></button></a>
         <a href="mojprofil.html"><button type="button" class="btn bg-danger"><img src="person.svg" style="width: 1em;" ></button></a>
         <a href="raspored.html"><button type="button" class="btn"><img src="calendar.svg" style="width: 1em;" ></button></a>
         <a href="kolegiji.html"><button type="button" class="btn"><img src="book.svg" style="width: 1em;" ></button></a>
