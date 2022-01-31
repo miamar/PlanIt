@@ -12,7 +12,6 @@
     <div class="text-center">
         <button type="submit" class="btn btn-lg btn-danger" style="margin-top: 1em;">PlanIt</button>
     </div>
-
 <div class="container mt-3"> 
     <div class="form-check mb-3 mt-3"> 
         <h3>Registracija</h3>
@@ -30,7 +29,7 @@
       <label for="pwd">Lozinka:</label>
       <input type="password" class="form-control" id="pwd" placeholder="Unesi lozinku" name="pswd">
     </div>
-    <a href="prijava.html" class="btn btn-primary" role="button" aria-pressed="true" style="margin-bottom: 1em;">Registracija</a>
+    <a href="prijava.php" class="btn btn-primary" role="button" aria-pressed="true" style="margin-bottom: 1em;">Registracija</a>
   </form>
 </div>
 

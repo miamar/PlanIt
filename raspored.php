@@ -10,17 +10,17 @@
 </head>
 <body>
     <div class="nav flex-column nav-pills  sticky-top" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-        <a class="nav-link" id="v-pills-planit-tab" data-toggle="pill" href="index.html" role="tab" aria-controls="v-pills-planit" aria-selected="false" style="color: black;"><b>PlanIt</b></a>
+        <a class="nav-link" id="v-pills-planit-tab" data-toggle="pill" href="index.php" role="tab" aria-controls="v-pills-planit" aria-selected="false" style="color: black;"><b>PlanIt</b></a>
         <hr style="width: 80%; align-self: center;">
-        <a class="nav-link" id="v-pills-planner-tab" data-toggle="pill" href="index.html" role="tab" aria-controls="v-pills-planner" aria-selected="false">Moj planner</a>
+        <a class="nav-link" id="v-pills-planner-tab" data-toggle="pill" href="index.php" role="tab" aria-controls="v-pills-planner" aria-selected="false">Moj planner</a>
         <hr style="width: 80%; align-self: center;">
-        <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="mojprofil.html" role="tab" aria-controls="v-pills-profile" aria-selected="false">Moj profil</a>
+        <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="mojprofil.php" role="tab" aria-controls="v-pills-profile" aria-selected="false">Moj profil</a>
         <hr style="width: 80%; align-self: center;">
-        <a class="nav-link" id="v-pills-raspored-tab" data-toggle="pill" href="raspored.html" role="tab" aria-controls="v-pills-raspored" aria-selected="true" style="background-color: #d9534f; color:white">Raspored sati</a>
+        <a class="nav-link" id="v-pills-raspored-tab" data-toggle="pill" href="raspored.php" role="tab" aria-controls="v-pills-raspored" aria-selected="true" style="background-color: #d9534f; color:white">Raspored sati</a>
         <hr style="width: 80%; align-self: center;">
-        <a class="nav-link" id="v-pills-kolegiji-tab" data-toggle="pill" href="kolegiji.html" role="tab" aria-controls="v-pills-kolegiji" aria-selected="false">Kolegiji</a>
+        <a class="nav-link" id="v-pills-kolegiji-tab" data-toggle="pill" href="kolegiji.php" role="tab" aria-controls="v-pills-kolegiji" aria-selected="false">Kolegiji</a>
         <hr style="width: 80%; align-self: center;">
-        <a class="nav-link" id="v-pills-obavijesti-tab" data-toggle="pill" href="obavijesti.htmls" role="tab" aria-controls="v-pills-obavijesti" aria-selected="false">Obavijesti</a>
+        <a class="nav-link" id="v-pills-obavijesti-tab" data-toggle="pill" href="obavijesti.phps" role="tab" aria-controls="v-pills-obavijesti" aria-selected="false">Obavijesti</a>
         <hr style="width: 80%; align-self: center;">
     </div>
     <div class="container-fluid">
@@ -35,7 +35,7 @@
                     </button>
                     <ul class="dropdown-menu">
                       <li><a class="dropdown-item" href="#">Moj profil</a></li>
-                      <li><a class="dropdown-item" href="prijava.html">Odjava</a></li>
+                      <li><a class="dropdown-item" href="prijava.php">Odjava</a></li>
                     </ul>
                   </div>
              </div>
@@ -43,7 +43,7 @@
       
         <div class="row">
           <div class="col-sm-12 col-12 d-flex justify-content-center" >
-            <a class="btn btn-primary" href="unosRasporeda.html" role="button">Dodaj novi raspored sati</a>
+            <a class="btn btn-primary" href="unosRasporeda.php" role="button">Dodaj novi raspored sati</a>
           </div>
     </div>
     <div class="row" style="margin-top: 1em;">
@@ -353,11 +353,11 @@
 </div>
 
     <div class="footer">
-      <p style="margin-top: 1em;"><a href="index.html"><button type="button" class="btn" ><img src="home-fill.svg" style="width: 1em;"></button></a>
-        <a href="mojprofil.html"><button type="button" class="btn"><img src="person.svg" style="width: 1em;" ></button></a>
-        <a href="raspored.html"><button type="button" class="btn bg-danger"><img src="calendar.svg" style="width: 1em;" ></button></a>
-        <a href="kolegiji.html"><button type="button" class="btn"><img src="book.svg" style="width: 1em;" ></button></a>
-        <a href="obavijesti.html"><button type="button" class="btn"><img src="bell.svg" style="width: 1em;" ></button></a>
+      <p style="margin-top: 1em;"><a href="index.php"><button type="button" class="btn" ><img src="home-fill.svg" style="width: 1em;"></button></a>
+        <a href="mojprofil.php"><button type="button" class="btn"><img src="person.svg" style="width: 1em;" ></button></a>
+        <a href="raspored.php"><button type="button" class="btn bg-danger"><img src="calendar.svg" style="width: 1em;" ></button></a>
+        <a href="kolegiji.php"><button type="button" class="btn"><img src="book.svg" style="width: 1em;" ></button></a>
+        <a href="obavijesti.php"><button type="button" class="btn"><img src="bell.svg" style="width: 1em;" ></button></a>
       </p>
     </div>
   </body>

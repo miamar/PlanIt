@@ -26,12 +26,12 @@
       <label for="pwd">Lozinka:</label>
       <input type="password" class="form-control" id="pwd" placeholder="Unesi lozinku" name="pswd">
     </div>
-    <a href="index.html" class="btn btn-primary" role="button" aria-pressed="true" style="margin-bottom: 1em;">Prijava</a>
+    <a href="index.php" class="btn btn-primary" role="button" aria-pressed="true" style="margin-bottom: 1em;">Prijava</a>
     <div class="form-check mb-3">
       <hr style="height:1px;width: 100%;color:black;"></hr>
     </div>
     <p>Novi korisnik?</p>
-    <a href="registracija.html" class="btn btn-primary" role="button" aria-pressed="true" style="margin-bottom: 1em;">Registracija</a>
+    <a href="registracija.php" class="btn btn-primary" role="button" aria-pressed="true" style="margin-bottom: 1em;">Registracija</a>
   </form>
 </div>
 
