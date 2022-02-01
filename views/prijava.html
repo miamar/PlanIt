@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Prijava</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/prijava.css" rel="stylesheet" type="text/css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <div class="text-center">
+        <button type="submit" class="btn btn-lg btn-danger" style="margin-top: 1em; ">PlanIt</button>
+    </div>
+
+<div class="container mt-3"> 
+    <div class="form-check mb-3 mt-3"> 
+        <h3>Prijava</h3>
+    </div> 
+    <form action="/login" method="post">
+    <div class="mb-3 mt-3">
+      <label for="username">Korisničko ime:</label>
+      <input type="text" class="form-control" id="username" placeholder="Unesi korisničko ime" name="username">
+    </div>
+    <div class="mb-3">
+      <label for="password">Lozinka:</label>
+      <input type="password" class="form-control" id="password" placeholder="Unesi lozinku" name="pswd">
+    </div>
+    <a href="index.html" class="btn btn-primary" role="button" aria-pressed="true" style="margin-bottom: 1em;">Prijava</a>
+    <div class="form-check mb-3">
+      <hr style="height:1px;width: 100%;color:black;"></hr>
+    </div>
+    <p>Novi korisnik?</p>
+    <a href="registracija.html" class="btn btn-primary" role="button" aria-pressed="true" style="margin-bottom: 1em;">Registracija</a>
+  </form>
+</div>
+
+</body>
+</html>
+
+
+
