@@ -6,7 +6,7 @@ const ejs = require('ejs');
 const passport = require('passport');
 const session = require('express-session');
 var express = require('express');
-app.set('view engine', 'ejs');
+
 
 const User = require('./models/User.js');
 
@@ -99,6 +99,7 @@ router.get('/signup', function(req, res){
 	res.sendFile(path.join(__dirname + '/views' + '/registracija.html'));
 });
 
+app.set('view engine', 'ejs');
 
 module.exports = router;
  
