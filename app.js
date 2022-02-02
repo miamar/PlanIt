@@ -2,16 +2,15 @@ var express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
+const path = require('path');
 const ejs = require('ejs');
 const passport = require('passport');
 const session = require('express-session');
-var express = require('express');
-
 
 const User = require('./models/User.js');
 
 var app = express();
-
+var path = require('path')
 
 /* SPAJANJE NA SERVER */
 app.listen(3030, () => {
@@ -23,8 +22,7 @@ app.listen(3030, () => {
     //console.log('Connected to Mongo DB Successfully!!');})
 
 mongoose.connect(
-	'mongodb+srv://anaanic:ana123@planitcluster.bifgt.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', 
-	{useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true,}
+	'mongodb+srv://anaanic:ana123@planitcluster.bifgt.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
 );
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -36,6 +34,7 @@ db.once('open', function() {
 //app.use(bodyParser.json());
 app.use( express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
 
 const router = express.Router();
 
