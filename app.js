@@ -32,8 +32,7 @@ db.once('open', function() {
 app.use( express.urlencoded({ extended: true }));
 app.use(express.json());
 //Server ne prepoznaje statičke fileove pa ih se mora staviti u public i označiti s express.static()
-app.use(express.static('public'))
-//app.use(express.static(path.join(__dirname, '/public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 const router = express.Router();
 
