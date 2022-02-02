@@ -10,7 +10,6 @@ const session = require('express-session');
 const User = require('./models/User.js');
 
 var app = express();
-var path = require('path')
 
 /* SPAJANJE NA SERVER */
 app.listen(3030, () => {
@@ -30,11 +29,11 @@ db.once('open', function() {
 	console.log('Connected to MongoDB!');
 });
 
-//app.use(bodyParser.urlencoded({ extended: true }));
-//app.use(bodyParser.json());
 app.use( express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+//Server ne prepoznaje statičke fileove pa ih se mora staviti u public i označiti s express.static()
+app.use(express.static('public'))
+//app.use(express.static(path.join(__dirname, '/public')));
 
 const router = express.Router();
 
