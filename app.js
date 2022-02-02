@@ -18,12 +18,24 @@ app.listen(3030, () => {
 	console.log('Server listening on 3030.');
 })
 
-mongoose.connect('mongodb+srv://anaanic:ana123@planitcluster.bifgt.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', () => {
-    console.log('Connected to Mongo DB Successfully!!');
- })
+/* SPAJANJE NA MONGODB */
+//mongoose.connect('mongodb+srv://anaanic:ana123@planitcluster.bifgt.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', () => {
+    //console.log('Connected to Mongo DB Successfully!!');})
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+mongoose.connect(
+	'mongodb+srv://anaanic:ana123@planitcluster.bifgt.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', 
+	{useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true,}
+);
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+	console.log('Connected to MongoDB!');
+});
+
+//app.use(bodyParser.urlencoded({ extended: true }));
+//app.use(bodyParser.json());
+app.use( express.urlencoded({ extended: true }));
+app.use(express.json());
 
 const router = express.Router();
 
@@ -38,6 +50,7 @@ router.use(passport.session());
 
 const LocalStrategy = require('passport-local').Strategy;
 
+// PROVJERA POSTOJI LI KORISNIK
 passport.use(new LocalStrategy(
    { usernameField: "userName" },
    (userName, password, done) => {
@@ -61,7 +74,7 @@ router.post('/login', (req, res, next) => {
 	(req, res, next);
 })
 
- router.post('/user', (request, response) => {
+router.post('/user', (request, response) => {
 	const user = new User({
 	   userName : request.body.userName,
 	   password : request.body.password,
@@ -74,13 +87,13 @@ router.post('/login', (req, res, next) => {
 	  user.password = hash;
 	  user.save().then(data => {
 		  console.log("Successfully created a new User");
-		  //response.redirect("/");
+		  response.redirect("/");
 	  }).catch(error => {
 		  console.log("Error - user not saved!");
 		  response.redirect("/signup");
 	  })
   })
-}) 
+})
 
 passport.serializeUser((user, done) => {
 	done(null, user.id);
@@ -95,11 +108,34 @@ passport.deserializeUser(function(id, done) {
 	console.log("Deserializing user:", loggedInUser);
 });
 
+router.get('/', function(req, res){
+	res.sendFile(path.join(__dirname + '/views' + '/prijava.html'));
+});
+
 router.get('/signup', function(req, res){
 	res.sendFile(path.join(__dirname + '/views' + '/registracija.html'));
 });
 
+router.get('/index', function(req, res){
+	res.sendFile(path.join(__dirname + '/views' + '/index.html'));
+});
+
+const { response } = require('express');
 app.set('view engine', 'ejs');
+
+router.use(function(req, res, next) {
+    console.log('-- session --');
+    console.dir(req.session);
+    next()
+});
+
+router.get('/logout', function(req, res){
+	req.logout();
+	res.redirect('/');
+	console.log("logout", req.user);
+});
+
+app.use(router);
 
 module.exports = router;
  
