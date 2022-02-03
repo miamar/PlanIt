@@ -13,6 +13,12 @@ const Kolegij = require('./models/Kolegij.js');
 
 var app = express();
 
+app.use( express.urlencoded({ extended: true }));
+app.use(express.json());
+//Server ne prepoznaje statičke fileove pa ih se mora staviti u public i označiti s express.static()
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.urlencoded({ extended: true }));
+
 /* SPAJANJE NA SERVER */
 app.listen(3030, () => {
 	console.log('Server listening on 3030.');
@@ -30,12 +36,6 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
 	console.log('Connected to MongoDB!');
 });
-
-app.use( express.urlencoded({ extended: true }));
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.json());
-//Server ne prepoznaje statičke fileove pa ih se mora staviti u public i označiti s express.static()
-app.use(express.static(path.join(__dirname, 'public')));
 
 const router = express.Router();
 
@@ -113,14 +113,14 @@ passport.deserializeUser(function(id, done) {
 
 //TODO LISTA
 var i1 = [];
-app.get('/todo', function(req, res){
-	res.render("todoList", {newListItem:i});
+app.get('/todoList', function(req, res){
+	res.render('todoList', {newListItem: i1 });
 });
 
-router.post('/todo', function(req, res){
-	var i=req.body.novaAktivnost;
+router.post('/todoList', function(req, res){
+	i=req.body.novaAktivnost;
 	i1.push(i);
-	res.redirect('mojprofil');
+	res.redirect("todoList");
 }
 )
 
