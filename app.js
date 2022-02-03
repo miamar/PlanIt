@@ -156,6 +156,26 @@ router.get('/urediprofil', function(req, res){
 	res.sendFile(path.join(__dirname + '/views' + '/urediprofil.html'));
 });
 
+router.get('/unosKolegija', function(req, res){
+	res.sendFile(path.join(__dirname + '/views' + '/unosKolegija.html'));
+});
+
+router.get('/unposPodatakaKolegiji', function(req, res){
+	res.sendFile(path.join(__dirname + '/views' + '/unosPodatakaKolegiji.html'));
+});
+
+router.get('/unosRasporeda', function(req, res){
+	res.sendFile(path.join(__dirname + '/views' + '/unosRasporeda.html'));
+});
+
+router.get('/brisanjeKolegija', function(req, res){
+	res.sendFile(path.join(__dirname + '/views' + '/brisanjeKolegija.html'));
+});
+
+router.get('/podaciKolegij', function(req, res){
+	res.sendFile(path.join(__dirname + '/views' + '/podaciKolegij.html'));
+});
+
 const { response } = require('express');
 app.set('view engine', 'ejs');
 
