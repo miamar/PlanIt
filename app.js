@@ -160,7 +160,7 @@ router.get('/unosKolegija', function(req, res){
 	res.sendFile(path.join(__dirname + '/views' + '/unosKolegija.html'));
 });
 
-router.get('/unposPodatakaKolegiji', function(req, res){
+router.get('/unosPodatakaKolegiji', function(req, res){
 	res.sendFile(path.join(__dirname + '/views' + '/unosPodatakaKolegiji.html'));
 });
 
