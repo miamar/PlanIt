@@ -73,6 +73,8 @@ router.post('/login', (req, res, next) => {
 
 router.post('/user', (request, response) => {
 	const user = new User({
+		name : request.body.name,
+		surname : request.body.surname,
 	   userName : request.body.userName,
 	   password : request.body.password,
 	   email : request.body.email
@@ -131,6 +133,10 @@ router.get('/kolegiji', function(req, res){
 
 router.get('/obavijesti', function(req, res){
 	res.sendFile(path.join(__dirname + '/views' + '/obavijesti.html'));
+});
+
+router.get('/urediprofil', function(req, res){
+	res.sendFile(path.join(__dirname + '/views' + '/urediprofil.html'));
 });
 
 const { response } = require('express');
