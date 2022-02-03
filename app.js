@@ -113,16 +113,16 @@ passport.deserializeUser(function(id, done) {
 
 //TODO LISTA
 var i1 = [];
-app.get('/todoList', function(req, res){
-	res.render('todoList', {newListItem: i1 });
+app.get("/list", function (req, res) {
+  res.render("list", { newListItem: i1 });
 });
 
-router.post('/todoList', function(req, res){
-	i=req.body.novaAktivnost;
-	i1.push(i);
-	res.redirect("todoList");
-}
-)
+app.post("/list", function (req, res) {
+  i = req.body.n;
+  i1.push(i);
+  res.redirect("/list");
+});
+
 
 router.get('/', function(req, res){
 	res.sendFile(path.join(__dirname + '/views' + '/prijava.html'));

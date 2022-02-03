@@ -185,35 +185,22 @@
               <div class="card bg-light mb-3">
                   <div class="card-header"><h6>ToDo lista</h6></div>
                   <div class="card-body">
-                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal"><img src="/icons/plus.svg" style="width: 1em;" ></button>
-                    <% for(var i=0;i<newListItem.lenght;i++) { %>
-                      <form action="/todoList" method="post">
-                      <p class="card-text"><input type="checkbox" id="check" name="check"><label for="checkbox"> <%= newListItem[i] %> <button type="button" class="btn"><img src="/icons/x.svg" style="width: 0.75em;" ></button></label></p>
-                      <hr>
-                      </form>
-                    <% } %>
-                  </div>
-                </div>
-                <div class="modal" id="myModal">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                    
-                      <!-- Modal Header -->
-                      <div class="modal-header">
-                        <h4 class="modal-title">Unos nove aktivnosti</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                      </div>
-                
-                      <!-- Modal body -->
-                      <form action="/todoList" method="post">
-                      
-                        <input type="text"  name="novaAktivnost">
-               
-                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" id="b">Spremi</button>
-                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Odustani</button>
-                      
-                    </form> 
-                    </div>
+                    <% for(var i=0;i<newListItem.length;i++) { %>
+                      <form action="/list" method="post">
+                          <p class="card-text">
+                            <input type="checkbox" id="check" name="check">
+                            <label for="check"> 
+                          </label>
+                          <%= newListItem[i] %> 
+                            <button type="button" class="btn"><img src="/icons/x.svg" style="width: 0.75em;" ></button>
+                          </p>        
+                          <hr>
+                        </form> 
+                      <% } %>
+                    <form action="/list" method="post">
+                      <p class="card-text"><button id="b" type="submit" class="btn"><img src="/icons/plus.svg" style="width: 1em;" ></button>
+                      <input type="text" name="n"  class="form-control" placeholder="Nova aktivnost"></p>
+                  </form>
                   </div>
                 </div>
           </div>
