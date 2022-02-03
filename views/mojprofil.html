@@ -131,7 +131,8 @@
                 <option value="prosinac">Prosinac</option>
               </select>
 					</div>
-					</div>    <div class="list-group-item list-group-item-action flex-column align-items-start">
+					</div>    
+          <div class="list-group-item list-group-item-action flex-column align-items-start">
                       <div class="d-flex w-100 justify-content-between">
                         <p class="mb-1">Ekonomika poslovanja</p>
                         <small class="text-muted">Za 3 dana</small>
@@ -149,9 +150,37 @@
                           <small class="text-muted">Za 10 dana</small>
                         </div>
                     </div>
+                    <div class="card-body">
+                      <p class="card-text" data-bs-toggle="modal" data-bs-target="#myModal"><a href="#"><img src="/icons/plus.svg" style="width: 0.75em; color: black;" > Dodaj novu aktivnost</a></p>
                   </div>
-
+                  </div>
+                  <div class="modal" id="myModal">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                      
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                          <h4 class="modal-title">Unos nove aktivnosti</h4>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                  
+                        <!-- Modal body -->
+                        <form action="/todo" method="post">
+                        <div class="modal-body">
+                          <input type="novaAktivnost" class="form-control" id="novaAktivnost" name="novaAktivnost">
+                        </div>
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Spremi</button>
+                          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Odustani</button>
+                        </div>
+                      </form> 
+                  
+                      </div>
+                    </div>
+                  </div>
             </div>
+
             <div class="col-sm-6 col-12 d-flex justify-content-center" >
               <div class="card bg-light mb-3">
                   <div class="card-header"><h6>ToDo lista</h6></div>
