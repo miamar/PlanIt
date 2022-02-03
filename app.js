@@ -8,6 +8,8 @@ const passport = require('passport');
 const session = require('express-session');
 
 const User = require('./models/User.js');
+const ToDo = require('./models/ToDo.js');
+const Kolegij = require('./models/Kolegij.js');
 
 var app = express();
 
