@@ -156,22 +156,17 @@
               <div class="card bg-light mb-3">
                   <div class="card-header"><h6>ToDo lista</h6></div>
                   <div class="card-body">
-                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal">
-                      <img src="/icons/plus.svg" style="width: 1em;" ></button>
-                    <p class="card-text"><input type="checkbox" id="check" name="check"><label for="check"> Some quick example text <button type="button" class="btn"><img src="/icons/x.svg" style="width: 0.75em;" ></button></label>
-                    </p>
-                    <hr>
-                    <p class="card-text"><input type="checkbox" id="check" name="check"><label for="check"> Some quick example text <button type="button" class="btn"><img src="/icons/x.svg" style="width: 0.75em;" ></button></label></p>
-                    <hr>
-                    <p class="card-text"><input type="checkbox" id="check" name="check"><label for="check"> Some quick example text <button type="button" class="btn"><img src="/icons/x.svg" style="width: 0.75em;" ></button></label></p>
-                    <hr>
-                    <p class="card-text"><input type="checkbox" id="check" name="check"><label for="check"> Some quick example text <button type="button" class="btn"><img src="/icons/x.svg" style="width: 0.75em;" ></button></label></p>
+                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal"><img src="/icons/plus.svg" style="width: 1em;" ></button>
+                      <form>
+                      <p class="card-text"><input type="checkbox" id="check" name="check"><label for="check"> Some quick example text <button type="button" class="btn"><img src="/icons/x.svg" style="width: 0.75em;" ></button></label></p>
+                      <hr>
+                      </form>
                   </div>
                 </div>
                 <div class="modal" id="myModal">
                   <div class="modal-dialog">
                     <div class="modal-content">
-                
+                    
                       <!-- Modal Header -->
                       <div class="modal-header">
                         <h4 class="modal-title">Unos nove aktivnosti</h4>
@@ -179,15 +174,17 @@
                       </div>
                 
                       <!-- Modal body -->
+                      <form action="/todo" method="post">
                       <div class="modal-body">
-                        <input type="novaAktivnost" class="form-control" id="novaAktivnost" style="border: 0;">
+                        <input type="novaAktivnost" class="form-control" id="novaAktivnost" name="novaAktivnost" style="border: 0;">
                       </div>
                 
                       <!-- Modal footer -->
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Spremi</button>
+                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Spremi</button>
                         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Odustani</button>
                       </div>
+                    </form> 
                 
                     </div>
                   </div>

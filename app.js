@@ -32,6 +32,7 @@ db.once('open', function() {
 });
 
 app.use( express.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 //Server ne prepoznaje statičke fileove pa ih se mora staviti u public i označiti s express.static()
 app.use(express.static(path.join(__dirname, 'public')));
@@ -73,6 +74,7 @@ router.post('/login', (req, res, next) => {
 	(req, res, next);
 })
 
+//KREIRANJE KORISNIKA
 router.post('/user', (request, response) => {
 	const user = new User({
 		name : request.body.name,
@@ -108,6 +110,19 @@ passport.deserializeUser(function(id, done) {
 	});
 	console.log("Deserializing user:", loggedInUser);
 });
+
+//TODO LISTA
+var i1 = [];
+app.get('/todo', function(req, res){
+	res.render("todoList", {newListItem:i});
+});
+
+router.post('/todo', function(req, res){
+	var i=req.body.novaAktivnost;
+	i1.push(i);
+	res.redirect('mojprofil');
+}
+)
 
 router.get('/', function(req, res){
 	res.sendFile(path.join(__dirname + '/views' + '/prijava.html'));
