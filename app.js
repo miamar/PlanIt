@@ -117,6 +117,22 @@ router.get('/index', function(req, res){
 	res.sendFile(path.join(__dirname + '/views' + '/index.html'));
 });
 
+router.get('/mojprofil', function(req, res){
+	res.sendFile(path.join(__dirname + '/views' + '/mojprofil.html'));
+});
+
+router.get('/raspored', function(req, res){
+	res.sendFile(path.join(__dirname + '/views' + '/raspored.html'));
+});
+
+router.get('/kolegiji', function(req, res){
+	res.sendFile(path.join(__dirname + '/views' + '/kolegiji.html'));
+});
+
+router.get('/obavijesti', function(req, res){
+	res.sendFile(path.join(__dirname + '/views' + '/obavijesti.html'));
+});
+
 const { response } = require('express');
 app.set('view engine', 'ejs');
 
