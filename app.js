@@ -114,13 +114,40 @@ passport.deserializeUser(function(id, done) {
 //TODO LISTA
 var i1 = [];
 app.get("/mojprofil", function (req, res) {
-  res.render("mojprofil", { newListItem: i1 });
+  ToDo.find({},function(err,f){
+	  if(f.length===0){
+		ToDo.insertMany(d,function(err){
+			if(err){
+				console.log(err);
+			}
+			else{
+				console.log("Success");
+			}
+		});
+	  res.redirect("/mojprofil");
+	  }
+	  else{
+		res.render("mojprofil", { newListItem: f });
+	  }
+  });
 });
 
 app.post("/list", function (req, res) {
   i = req.body.n;
-  i1.push(i);
+  const item = new ToDo({
+	  textToDO: i,
+  })
+  item.save();
   res.redirect("/mojprofil");
+});
+
+//Kada se klikne na checkbox bilješka se briše iz baze
+app.post("/delete", function(req,res){
+	ToDo.findByIdAndRemove(req.body.checkbox, function (err){
+		if(!err){
+			console.log("Deleted");
+		}
+	})
 });
 
 
@@ -136,9 +163,9 @@ router.get('/index', function(req, res){
 	res.sendFile(path.join(__dirname + '/views' + '/index.html'));
 });
 
-router.get('/mojprofil', function(req, res){
+/*router.get('/mojprofil', function(req, res){
 	res.sendFile(path.join(__dirname + '/views' + '/mojprofil.html'));
-});
+});*/
 
 router.get('/raspored', function(req, res){
 	res.sendFile(path.join(__dirname + '/views' + '/raspored.html'));

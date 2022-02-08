@@ -186,10 +186,10 @@
                   <div class="card-header"><h6>ToDo lista</h6></div>
                   <div class="card-body">
                     <% for(var i=0;i<newListItem.length;i++) { %>
-                      <form action="/list" method="post">
+                      <form action="/delete" method="post">
                           <p class="card-text">
-                            <input type="checkbox" id="check" name="check">
-                            <label for="check"> 
+                            <input type="checkbox" name="checkbox" value="<%= newListItem[i]._id%>" onchange="this.form.submit()" id="checkbox">
+                            <label for="checkbox"> 
                           </label>
                           <%= newListItem[i] %> 
                             <!-- <button type="button" class="btn"><img src="/icons/x.svg" style="width: 0.75em;" ></button> -->
