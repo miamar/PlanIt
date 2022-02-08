@@ -112,7 +112,8 @@ passport.deserializeUser(function(id, done) {
 });
 
 //TODO LISTA
-var i1 = [];
+const item1 = new ToDo({ textToDo: "Welcome to ItBuddies" });
+const d=[item1];
 app.get("/mojprofil", function (req, res) {
   ToDo.find({},function(err,f){
 	  if(f.length===0){
@@ -121,7 +122,7 @@ app.get("/mojprofil", function (req, res) {
 				console.log(err);
 			}
 			else{
-				console.log("Success");
+				console.log("Bilješka je spremljena");
 			}
 		});
 	  res.redirect("/mojprofil");
@@ -135,17 +136,18 @@ app.get("/mojprofil", function (req, res) {
 app.post("/list", function (req, res) {
   i = req.body.n;
   const item = new ToDo({
-	  textToDO: i,
-  })
+	  textToDo: i
+  });
   item.save();
   res.redirect("/mojprofil");
 });
 
-//Kada se klikne na checkbox bilješka se briše iz baze
+//Kada se klikne na checkbox bilješka automatski se briše iz baze
 app.post("/delete", function(req,res){
 	ToDo.findByIdAndRemove(req.body.checkbox, function (err){
 		if(!err){
-			console.log("Deleted");
+			console.log("Bilješka je izbrisana!");
+			res.redirect("/mojprofil");
 		}
 	})
 });
