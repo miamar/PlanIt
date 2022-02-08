@@ -113,14 +113,14 @@ passport.deserializeUser(function(id, done) {
 
 //TODO LISTA
 var i1 = [];
-app.get("/list", function (req, res) {
-  res.render("list", { newListItem: i1 });
+app.get("/mojprofil", function (req, res) {
+  res.render("mojprofil", { newListItem: i1 });
 });
 
 app.post("/list", function (req, res) {
   i = req.body.n;
   i1.push(i);
-  res.redirect("/list");
+  res.redirect("/mojprofil");
 });
 
 

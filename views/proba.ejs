@@ -192,14 +192,16 @@
                             <label for="check"> 
                           </label>
                           <%= newListItem[i] %> 
-                            <button type="button" class="btn"><img src="/icons/x.svg" style="width: 0.75em;" ></button>
+                            <!-- <button type="button" class="btn"><img src="/icons/x.svg" style="width: 0.75em;" ></button> -->
                           </p>        
                           <hr>
                         </form> 
                       <% } %>
+                    </div>
+                    <div class="card-footer">
                     <form action="/list" method="post">
-                      <p class="card-text"><button id="b" type="submit" class="btn"><img src="/icons/plus.svg" style="width: 1em;" ></button>
-                      <input type="text" name="n"  class="form-control" placeholder="Nova aktivnost"></p>
+                      <input type="text" name="n"  class="form-control" placeholder="Upiši novu bilješku"></p>
+                      <button id="b" type="submit" class="btn"><img src="/icons/plus.svg" style="width: 1em;" ></button>Dodaj novu bilješkut</p>
                   </form>
                   </div>
                 </div>
@@ -218,6 +220,3 @@
 
 </body>
 </html>
-
-
-

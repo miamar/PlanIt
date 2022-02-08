@@ -151,7 +151,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                      <p class="card-text" data-bs-toggle="modal" data-bs-target="#myModal"><a href="#"><img src="/icons/plus.svg" style="width: 0.75em; color: black;" > Dodaj novu aktivnost</a></p>
+                      <p class="card-text" data-bs-toggle="modal" data-bs-target="#myModal" style="color: black;"><a href="#"><img src="/icons/plus.svg" style="width: 0.75em; color: black;" > Dodaj novu aktivnost</a></p>
                   </div>
                   </div>
                   <div class="modal" id="myModal">
@@ -183,39 +183,26 @@
 
             <div class="col-sm-6 col-12 d-flex justify-content-center" >
               <div class="card bg-light mb-3">
-                  <div class="card-header"><h6>ToDo lista</h6><a href="/todoList">todo</a></div>
+                  <div class="card-header"><h6>ToDo lista</h6></div>
                   <div class="card-body">
-                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#myModal"><img src="/icons/plus.svg" style="width: 1em;" ></button>
-                      <form>
-                      <p class="card-text"><input type="checkbox" id="check" name="check"><label for="check"> Some quick example text <button type="button" class="btn"><img src="/icons/x.svg" style="width: 0.75em;" ></button></label></p>
-                      <hr>
-                      </form>
-                  </div>
-                </div>
-                <div class="modal" id="myModal">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                    
-                      <!-- Modal Header -->
-                      <div class="modal-header">
-                        <h4 class="modal-title">Unos nove aktivnosti</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                      </div>
-                
-                      <!-- Modal body -->
-                      <form action="/todo" method="post">
-                      <div class="modal-body">
-                        <input type="novaAktivnost" class="form-control" id="novaAktivnost" name="novaAktivnost" style="border: 0;">
-                      </div>
-                
-                      <!-- Modal footer -->
-                      <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Spremi</button>
-                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Odustani</button>
-                      </div>
-                    </form> 
-                
+                    <% for(var i=0;i<newListItem.length;i++) { %>
+                      <form action="/list" method="post">
+                          <p class="card-text">
+                            <input type="checkbox" id="check" name="check">
+                            <label for="check"> 
+                          </label>
+                          <%= newListItem[i] %> 
+                            <!-- <button type="button" class="btn"><img src="/icons/x.svg" style="width: 0.75em;" ></button> -->
+                          </p>        
+                          <hr>
+                        </form> 
+                      <% } %>
                     </div>
+                    <div class="card-footer">
+                    <form action="/list" method="post">
+                      <input type="text" name="n"  class="form-control" placeholder="Upiši novu bilješku"></p>
+                      <button id="b" type="submit" class="btn"><img src="/icons/plus.svg" style="width: 1em;" ></button>Dodaj novu bilješkut</p>
+                  </form>
                   </div>
                 </div>
           </div>
