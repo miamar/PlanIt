@@ -165,16 +165,8 @@ router.get('/index', function(req, res){
 	res.sendFile(path.join(__dirname + '/views' + '/index.html'));
 });
 
-/*router.get('/mojprofil', function(req, res){
-	res.sendFile(path.join(__dirname + '/views' + '/mojprofil.html'));
-});*/
-
 router.get('/raspored', function(req, res){
 	res.sendFile(path.join(__dirname + '/views' + '/raspored.html'));
-});
-
-router.get('/kolegiji', function(req, res){
-	res.sendFile(path.join(__dirname + '/views' + '/kolegiji.html'));
 });
 
 router.get('/obavijesti', function(req, res){
@@ -191,10 +183,6 @@ router.get('/unosPodatakaKolegiji', function(req, res){
 
 router.get('/unosRasporeda', function(req, res){
 	res.sendFile(path.join(__dirname + '/views' + '/unosRasporeda.html'));
-});
-
-router.get('/brisanjeKolegija', function(req, res){
-	res.sendFile(path.join(__dirname + '/views' + '/brisanjeKolegija.html'));
 });
 
 router.get('/podaciKolegij', function(req, res){
@@ -224,6 +212,33 @@ router.post('/unosKolegija', function(req, res) {
 router.get('/unosKolegija', function(req, res) {
 	res.sendFile(path.join(__dirname + '/views/' + 'unosKolegija.html'));
 });
+
+//DOHVAĆANJE KOLEGIJA
+router.get('/kolegiji', function(req, res) {
+	Kolegij.find({/*user: req.user.id*/}).exec(function(err, kolegiji){
+		if (err) throw err;
+		//console.log(req.user.id);
+		res.render('kolegiji.ejs', { "kolegiji" : kolegiji });
+	});
+});
+
+//BRISANJE KOLEGIJA
+router.get('/brisanjeKolegija', function(req, res) {
+	Kolegij.find({/*user: req.user.id*/}).exec(function(err, kolegiji){
+		if (err) throw err;
+		//console.log(req.user.id);
+		res.render('brisanjeKolegija.ejs', { "kolegiji" : kolegiji });
+	});
+});
+router.get("/izbrisiKolegij/:id", (req,res,next)=>{
+	var note = new Kolegij(req.body);
+    Kolegij.findByIdAndRemove(req.params.id ,{useFindAndModify : false}, (err, kolegij)=> {
+       if(err) console.log(err)
+       console.log("Izbrisan kolegij: ", Kolegij);
+    })
+  res.redirect('/brisanjeKolegija');
+})
+
 
 router.use(function(req, res, next) {
     console.log('-- session --');

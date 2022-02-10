@@ -11,7 +11,7 @@
 <body>
     
     <div class="nav flex-column nav-pills sticky-top" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-        <a class="nav-link" id="v-pills-planit-tab" data-toggle="pill" href="/index" role="tab" aria-controls="v-pills-planit" aria-selected="false" style="color: black;"><b>PlanIt</b></a>
+        <a class="nav-link" id="v-pills-planit-tab" data-toggle="pill" href="/index" role="tab" aria-controls="v-pills-planit" aria-selected="false"><img src="/images/logo.png" style="width: 70%;"></a>
         <hr style="width: 80%; align-self: center;">
         <a class="nav-link" id="v-pills-planner-tab" data-toggle="pill" href="/index" role="tab" aria-controls="v-pills-planner" aria-selected="false">Moj planner</a>
         <hr style="width: 80%; align-self: center;">
@@ -24,11 +24,10 @@
         <a class="nav-link" id="v-pills-obavijesti-tab" data-toggle="pill" href="/obavijesti" role="tab" aria-controls="v-pills-obavijesti" aria-selected="false">Obavijesti</a>
         <hr style="width: 80%; align-self: center;">
     </div>
-    
     <div class="container-fluid">
       <div class="row">
         <div class="col-6" style="margin-top: 1em;">
-           <p style="color: darkgray;">Brisanje kolegija</p>
+           <p style="color: darkgray;">Kolegiji</p>
         </div>
         <div class="col-6" style="margin-top: 1em;">
             <div class="dropdown" style="float:right;">
@@ -42,67 +41,50 @@
               </div>
          </div>
     </div>
-    <div class="row">
-      <div class="col-12" style="margin-top: 1em;">
+    <div class="row" style="margin-top: 1em;" >
+      <div class="col-12">
         <div class="dropdown">
-          <a href="/kolegiji"><button type="button" class="btn btn-secondary ">
-            Kolegiji
-        </button></a>
+          <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown">
+              Kolegiji
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/unosKolegija">Unesi novi kolegij</a></li>
+            <li><a class="dropdown-item" href="/brisanjeKolegija">Obriši kolegij</a></li>
+          </ul>
         </div>
        </div>
     </div>
-    <div class="row" style="margin-top: 1em;">
-      <div class="col-sm-4 d-flex justify-content-center">
-        <div class="card">
+
+    <div class="row justify-content-center" style="margin-top: 1em; margin-bottom: 1em;">
+      <% kolegiji.forEach(function (kolegij) { %>
+      <div class="col-md-auto">
+        <a href="/podaciKolegij"><div class="card" style="width: 18rem;">
+          <img src="/images/elektronickoGospodarstvo.jpg" class="card-img-top" alt="..."  style="height:12em;">
           <div class="card-body">
-                <h4 class="text-left">Elektroničko gospodarstvo</h4>
-                <p><strong>P:358, V:358 </strong></p>
-                <p>Hibridni model</p>
-                <button type="delete" class="btn btn-danger">Izbriši</button>
+            <p class="card-text"><h4 class="text-left"><%= kolegij.nazivKolegija %></h4>
+              <p><strong>P:<%= kolegij.dvoranaPredavanje %>, V:<%= kolegij.dvoranaVjezbe %> </strong></p>
+              <p><%= kolegij.modelNastave %></p> </p>
           </div>
-        </div>
+        </div></a>
       </div>
-      <div class="col-sm-4 d-flex justify-content-center d-flex justify-content-center">
-        <div class="card">
-          <div class="card-body">
-            <h4 class="text-left">Inteligentni sustavi 1</h4>
-            <p><strong>P:028, V:366 </strong></p>
-            <p>Hibridni model</p>
-                <button type="delete" class="btn btn-danger">Izbriši</button>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-4 d-flex justify-content-center">
-        <div class="card">
-          <div class="card-body">
-            <h4 class="text-left">Operacijska istraživanja 1</h4>
-            <p><strong>P:S32, V:350 </strong></p>
-            <p>Hibridni model</p>
-                <button type="delete" class="btn btn-danger">Izbriši</button>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-4 d-flex justify-content-center">
-        <div class="card">
-          <div class="card-body">
-            <h4 class="text-left">Ekonomoka Poslovanja</h4>
-            <p><strong>P:028, V:366 </strong></p>
-            <p>Hibridni model</p>
-                <button type="delete" class="btn btn-danger">Izbriši</button>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-4 d-flex justify-content-center">
-        <div class="card">
-          <div class="card-body">
-            <h4 class="text-left">Programsko inženjerstvo</h4>
-            <p><strong>P:028, V:350 </strong></p>
-            <p>Hibridni model</p>
-                <button type="delete" class="btn btn-danger">Izbriši</button>
-          </div>
-        </div>
-      </div> 
+      <% }) %>
     </div>
+    
+     <!--  
+    <div class="col-md-auto">
+      <div class="card" style="width: 28rem;">
+        <div class="card-horizontal">
+            <div class="img-square-wrapper" justify-content-center">
+                <img class="" src="elektronickoGospodarstvo.jpg" alt="Card image cap" width="150px">
+            </div>
+            <div class="card-body">
+                <h4 class="card-title">Card title</h4>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div>
+    </div>
+    </div>
+    -->
     <div class="footer">
       <p style="margin-top: 1em;"><a href="/index"><button type="button" class="btn" ><img src="/icons/home-fill.svg" style="width: 1em;"></button></a>
         <a href="/mojprofil"><button type="button" class="btn"><img src="/icons/person.svg" style="width: 1em;" ></button></a>
@@ -111,5 +93,6 @@
         <a href="/obavijesti"><button type="button" class="btn"><img src="/icons/bell.svg" style="width: 1em;" ></button></a>
       </p>
     </div>
+    
 </body>
 </html>
