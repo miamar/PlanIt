@@ -3,7 +3,7 @@ const bodoviSchema = mongoose.Schema({
 	user: {
 		type: String
 	},
-    nazivKolegija: {
+    kolegij: {
 		type: String
 	},
 	kolokvijiBodovi: { 

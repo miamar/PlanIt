@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const toDoSchema = mongoose.Schema({
-	/*user: {
+	user: {
 	  type: String
-    },*/
+    },
 	textToDo: { 
 		type: String
 	}

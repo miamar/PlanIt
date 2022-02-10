@@ -3,6 +3,9 @@ const asistentSchema = mongoose.Schema({
 	user: {
 		type: String
 	},
+	kolegij: {
+		type: String
+	},
 	imePrezimeAsistenta: { 
 		type: String
     },
