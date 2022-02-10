@@ -3,12 +3,10 @@ mongoose.pluralize(null);
 const userSchema = mongoose.Schema({
      name: {
         type: String, 
-        unique: true, 
         required: true
      },
      surname: {
-        type: String, 
-        unique: true, 
+        type: String,  
         required: true
      },
      email: { 

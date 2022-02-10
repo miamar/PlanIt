@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="text-center">
-        <button type="submit" class="btn btn-lg btn-danger" style="margin-top: 1em;">PlanIt</button>
+        <button class="btn btn-lg btn-danger" style="margin-top: 1em;">PlanIt</button>
     </div>
 <div class="container mt-3"> 
     <div class="form-check mb-3 mt-3"> 
@@ -19,25 +19,27 @@
     <form action="/user" method="post">
     <div class="mb-3 mt-3">
       <label for="name">Ime:</label>
-      <input type="text" class="form-control" id="name" placeholder="Unesi ime" name="name">
+      <input type="text" class="form-control" id="name" placeholder="Unesi ime" name="name" required>
     </div>
     <div class="mb-3 mt-3">
       <label for="surname">Prezime:</label>
-      <input type="text" class="form-control" id="surname" placeholder="Unesi prezime" name="surname">
+      <input type="text" class="form-control" id="surname" placeholder="Unesi prezime" name="surname" required>
     </div>
     <div class="mb-3 mt-3">
         <label for="email">Email:</label>
-        <input type="email" class="form-control" id="email" placeholder="Unesi email" name="email">
+        <input type="email" class="form-control" id="email" placeholder="Unesi email" name="email" required>
       </div>
     <div class="mb-3 mt-3">
       <label for="userName">Korisničko ime:</label>
-      <input type="text" class="form-control" id="userName" placeholder="Unesi korisničko ime" name="userName">
+      <input type="text" class="form-control" id="userName" placeholder="Unesi korisničko ime" name="userName" required>
     </div>
     <div class="mb-3">
       <label for="password">Lozinka:</label>
-      <input type="password" class="form-control" id="password" placeholder="Unesi lozinku" name="password">
+      <input type="text" class="form-control" id="password" placeholder="Unesi lozinku" name="password" required>
     </div>
-    <a href="/" class="btn btn-primary" role="button" aria-pressed="true" style="margin-bottom: 1em;">Registracija</a>
+    <div class="mb-3">
+      <input type="submit" class="btn btn-primary" id="submitDetails" name="submitDetails" value="Spremi podatke">
+    </div>
   </form>
 </div>
 
