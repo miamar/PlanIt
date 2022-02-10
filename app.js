@@ -111,26 +111,12 @@ passport.deserializeUser(function(id, done) {
 	console.log("Deserializing user:", loggedInUser);
 });
 
-//TODO LISTA
-const item1 = new ToDo({ textToDo: "Welcome to ItBuddies" });
-const d=[item1];
+//TODO LISTA mojprofil.ejs
 app.get("/mojprofil", function (req, res) {
-  ToDo.find({},function(err,f){
-	  if(f.length===0){
-		ToDo.insertMany(d,function(err){
-			if(err){
-				console.log(err);
-			}
-			else{
-				console.log("Bilješka je spremljena");
-			}
-		});
-	  res.redirect("/mojprofil");
-	  }
-	  else{
-		res.render("mojprofil", { newListItem: f });
-	  }
-  });
+	ToDo.find({}).exec(function(err, newListItem){
+		   if(err) throw(err);
+		  res.render("mojprofil", { newListItem});
+	});
 });
 
 app.post("/list", function (req, res) {
@@ -143,11 +129,28 @@ app.post("/list", function (req, res) {
 });
 
 //Kada se klikne na checkbox bilješka automatski se briše iz baze
-app.post("/delete", function(req,res){
+app.post("/deleteItem", function(req,res){
 	ToDo.findByIdAndRemove(req.body.checkbox, function (err){
 		if(!err){
 			console.log("Bilješka je izbrisana!");
 			res.redirect("/mojprofil");
+		}
+	})
+});
+
+//TODO LISTA index.ejs
+app.get("/index", function (req, res) {
+	ToDo.find({}).exec(function(err, newListItem){
+		   if(err) throw(err);
+		  res.render("index", { newListItem});
+	});
+});
+
+app.post("/deleteItemIndex", function(req,res){
+	ToDo.findByIdAndRemove(req.body.checkbox, function (err){
+		if(!err){
+			console.log("Bilješka je izbrisana!");
+			res.redirect("/index");
 		}
 	})
 });
@@ -159,10 +162,6 @@ router.get('/', function(req, res){
 
 router.get('/signup', function(req, res){
 	res.sendFile(path.join(__dirname + '/views' + '/registracija.html'));
-});
-
-router.get('/index', function(req, res){
-	res.sendFile(path.join(__dirname + '/views' + '/index.html'));
 });
 
 router.get('/raspored', function(req, res){
@@ -239,7 +238,7 @@ router.get("/izbrisiKolegij/:id", (req,res,next)=>{
   res.redirect('/brisanjeKolegija');
 })
 
-
+//SESSIONS
 router.use(function(req, res, next) {
     console.log('-- session --');
     console.dir(req.session);

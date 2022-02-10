@@ -71,20 +71,25 @@
                     </div>
                   </div>
             </div>
-            <div class="col-sm-6 col-12 d-flex justify-content-center" >
-                <div class="card bg-light mb-3">
+            <div class="col-sm-6 col-12 d-flex justify-content-center">
+              <div class="card bg-light mb-3">
                   <div class="card-header"><h6>ToDo lista</h6></div>
-                    <div class="card-body">
-                      <p class="card-text"><input type="checkbox" id="check" name="check"><label for="check"> Some quick example text </label></p>
-                      <hr>
-                      <p class="card-text"><input type="checkbox" id="check" name="check"><label for="check"> Some quick example text </label></p>
-                      <hr>
-                      <p class="card-text"><input type="checkbox" id="check" name="check"><label for="check"> Some quick example text </label></p>
-                      <hr>
-                      <p class="card-text"><input type="checkbox" id="check" name="check"><label for="check"> Some quick example text </label></p>
+                  <div class="card-body">
+                    <% for(var i=0;i<newListItem.length;i++) { %>
+                      <form action="/deleteItemIndex" method="post">
+                          <p class="card-text">
+                            <input type="checkbox" name="checkbox" value="<%= newListItem[i]._id%>" onchange="this.form.submit()" id="checkbox">
+                            <label for="checkbox"> 
+                          </label>
+                          <%= newListItem[i] %> 
+                          </p>        
+                          <hr>
+                        </form> 
+                      <% } %>
                     </div>
                   </div>
-            </div>
+                </div>
+          
             <div class="col-sm-6 col-12 d-flex justify-content-center">
                 <!--  
 
@@ -116,6 +121,7 @@
                   </div>
 
             </div>
+          </div>
             <!--
             <div class="col-12 d-flex justify-content-center">
                 <div class="card text-white bg-dark mb-3">
