@@ -185,10 +185,6 @@ router.get('/urediprofil', function(req, res){
 	res.sendFile(path.join(__dirname + '/views' + '/urediprofil.html'));
 });
 
-router.get('/unosKolegija', function(req, res){
-	res.sendFile(path.join(__dirname + '/views' + '/unosKolegija.html'));
-});
-
 router.get('/unosPodatakaKolegiji', function(req, res){
 	res.sendFile(path.join(__dirname + '/views' + '/unosPodatakaKolegiji.html'));
 });
@@ -207,6 +203,27 @@ router.get('/podaciKolegij', function(req, res){
 
 const { response } = require('express');
 app.set('view engine', 'ejs');
+
+// STVARANJE NOVOG KOLEGIJA
+router.post('/unosKolegija', function(req, res) {
+	const note = new Kolegij({
+			//user : req.user.id,
+			nazivKolegija : req.body.nazivKolegija,
+			dvoranaPredavanje : req.body.dvoranaPredavanje,
+			dvoranaVjezbe : req.body.dvoranaVjezbe,
+			modelNastave : req.body.modelNastave
+		});
+		note.save().then(data => {
+			console.log("Uspješno kreiran novi kolegij!");
+		}).catch(error => {
+			console.log("Error - note not saved!")
+		})
+	res.redirect('/kolegiji');
+})
+
+router.get('/unosKolegija', function(req, res) {
+	res.sendFile(path.join(__dirname + '/views/' + 'unosKolegija.html'));
+});
 
 router.use(function(req, res, next) {
     console.log('-- session --');

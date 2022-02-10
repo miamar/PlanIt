@@ -3,13 +3,13 @@ const kolegijSchema = mongoose.Schema({
 	user: {
 		type: String,
 	},
-	imeKolegija: { 
+	nazivKolegija: { 
 		type: String
     },
-	profesorPredavanje: {
+	dvoranaPredavanje: {
 		type: String
 	},
-	asistentVjezbe:{
+	dvoranaVjezbe:{
 		type: String
 	},
 	modelNastave: {

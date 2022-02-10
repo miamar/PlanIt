@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Home</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/index.css" rel="stylesheet" type="text/css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    
+    <div class="nav flex-column nav-pills sticky-top" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <a class="nav-link" id="v-pills-planit-tab" data-toggle="pill" href="/index" role="tab" aria-controls="v-pills-planit" aria-selected="false"><img src="/images/logo.png" style="width: 70%;"></a>
+        <hr style="width: 80%; align-self: center;">
+        <a class="nav-link" id="v-pills-planner-tab" data-toggle="pill" href="/index" role="tab" aria-controls="v-pills-planner" aria-selected="false">Moj planner</a>
+        <hr style="width: 80%; align-self: center;">
+        <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="/mojprofil" role="tab" aria-controls="v-pills-profile" aria-selected="false">Moj profil</a>
+        <hr style="width: 80%; align-self: center;">
+        <a class="nav-link" id="v-pills-raspored-tab" data-toggle="pill" href="/raspored" role="tab" aria-controls="v-pills-raspored" aria-selected="false">Raspored sati</a>
+        <hr style="width: 80%; align-self: center;">
+        <a class="nav-link active" id="v-pills-kolegiji-tab" data-toggle="pill" href="/kolegiji" role="tab" aria-controls="v-pills-kolegiji" aria-selected="True"  style="background-color: #d9534f; color:white">Kolegiji</a>
+        <hr style="width: 80%; align-self: center;">
+        <a class="nav-link" id="v-pills-obavijesti-tab" data-toggle="pill" href="/obavijesti" role="tab" aria-controls="v-pills-obavijesti" aria-selected="false">Obavijesti</a>
+        <hr style="width: 80%; align-self: center;">
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-6" style="margin-top: 1em;">
+           <p style="color: darkgray;">Kolegiji</p>
+        </div>
+        <div class="col-6" style="margin-top: 1em;">
+            <div class="dropdown" style="float:right;">
+                <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown">
+                    <img src="/icons/person.svg" style="width: 70%;">
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="/mojprofil">Moj profil</a></li>
+                  <li><a class="dropdown-item" href="/logout">Odjava</a></li>
+                </ul>
+              </div>
+         </div>
+    </div>
+    <div class="row" style="margin-top: 1em;" >
+      <div class="col-12">
+        <div class="dropdown">
+          <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown">
+              Kolegiji
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/unosKolegija">Unesi novi kolegij</a></li>
+            <li><a class="dropdown-item" href="/brisanjeKolegija">Obriši kolegij</a></li>
+          </ul>
+        </div>
+       </div>
+    </div>
+
+
+    <div class="row justify-content-center" style="margin-top: 1em; margin-bottom: 1em;">
+      <div class="col-md-auto">
+        <a href="/podaciKolegij"><div class="card" style="width: 18rem;">
+          <img src="/images/elektronickoGospodarstvo.jpg" class="card-img-top" alt="..."  style="height:12em;">
+          <div class="card-body">
+            <p class="card-text"><h4 class="text-left">Elektroničko gospodarstvo</h4>
+              <p><strong>P:358, V:358 </strong></p>
+              <p>Hibridni model</p> </p>
+          </div>
+        </div></a>
+      </div>
+      <div class="col-md-auto">
+        <a href="/podaciKolegij"><div class="card" style="width: 18rem;">
+          <img src="/images/inteligentniSustavi.jpg" class="card-img-top" alt="..." style="height:12em;">
+          <div class="card-body">
+            <p class="card-text"><h4 class="text-left">Inteligentni sustavi 1</h4>
+        <p><strong>P:028, V:366 </strong></p>
+        <p>Hibridni model</p> </p>
+          </div>
+        </div></a>
+      </div>
+      <div class="col-md-auto">
+        <a href="/podaciKolegij"><div class="card" style="width: 18rem;">
+          <img src="/images/programskoInzenjerstvo.jpg" class="card-img-top" alt="..."  style="height:12em;">
+          <div class="card-body">
+            <p class="card-text"><h4 class="text-left">Programsko inženjerstvo</h4>
+              <p><strong>P:028, V:350 </strong></p>
+              <p>Hibridni model</p> </p>
+          </div>
+        </div></a>
+      </div>
+      <div class="col-md-auto">
+        <a href="/podaciKolegij"><div class="card" style="width: 18rem;">
+          <img src="/images/ekonomikaPoslovanja.png" class="card-img-top" alt="..."  style="height:12em;">
+          <div class="card-body">
+            <p class="card-text"><h4 class="text-left">Ekonomoka Poslovanja</h4>
+              <p><strong>P:028, V:366 </strong></p>
+              <p>Hibridni model</p> </p>
+          </div>
+        </div></a>
+      </div>
+      <div class="col-md-auto">
+        <a href="/podaciKolegij"><div class="card" style="width: 18rem;">
+          <img src="/images/operacijskaIstrazivanja.jpg" class="card-img-top" alt="..."  style="height:12em;">
+          <div class="card-body">
+            <p class="card-text"><h4 class="text-left">Operacijska istraživanja 1</h4>
+              <p><strong>P:S32, V:350 </strong></p>
+              <p>Hibridni model</p></p>
+          </div>
+        </div></a>
+      </div>
+    </div>
+    
+     <!--  
+    <div class="col-md-auto">
+      <div class="card" style="width: 28rem;">
+        <div class="card-horizontal">
+            <div class="img-square-wrapper" justify-content-center">
+                <img class="" src="elektronickoGospodarstvo.jpg" alt="Card image cap" width="150px">
+            </div>
+            <div class="card-body">
+                <h4 class="card-title">Card title</h4>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div>
+    </div>
+    </div>
+    -->
+    <div class="footer">
+      <p style="margin-top: 1em;"><a href="/index"><button type="button" class="btn" ><img src="/icons/home-fill.svg" style="width: 1em;"></button></a>
+        <a href="/mojprofil"><button type="button" class="btn"><img src="/icons/person.svg" style="width: 1em;" ></button></a>
+        <a href="/raspored"><button type="button" class="btn"><img src="/icons/calendar.svg" style="width: 1em;" ></button></a>
+        <a href="/kolegiji"><button type="button" class="btn bg-danger"><img src="/icons/book.svg" style="width: 1em;" ></button></a>
+        <a href="/obavijesti"><button type="button" class="btn"><img src="/icons/bell.svg" style="width: 1em;" ></button></a>
+      </p>
+    </div>
+    
+</body>
+</html>

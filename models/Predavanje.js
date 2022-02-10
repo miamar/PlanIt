@@ -9,6 +9,9 @@ const predavanjeSchema = mongoose.Schema({
     dvoranaPredavanje: { 
         type: String
     },
+	dvoranaVjezbe: { 
+        type: String
+    },
 	predavanjeVjezbe: {
 		type: String,
 		enum: ['Predavanje', 'Vježbe']
