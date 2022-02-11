@@ -6,7 +6,10 @@ const asistentSchema = mongoose.Schema({
 	kolegij: {
 		type: String
 	},
-	imePrezimeAsistenta: { 
+	imeAsistenta: { 
+		type: String
+    },
+	prezimeAsistenta: { 
 		type: String
     },
 	emailAsistenta: {

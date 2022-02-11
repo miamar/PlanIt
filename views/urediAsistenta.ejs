@@ -58,7 +58,7 @@
             <div class="card bg-light mb-3">
                 <div class="card-header"><h5>Kontakt (profesor)</h5></div>
                 <div class="card-body">
-                  <form action="unosAsistenta" method="post"> 
+                  <form action="urediAsistenta/<%= asistent._id %>" method="post"> 
                     <p class="card-text"><b>Asistent:</b></p>
                     <div class="form-group">
                         <label class="from-control">Ime</label>
@@ -77,8 +77,8 @@
                   <input type="text" class="form-control" id="uredAsistenta" name="uredAsistenta">
                 </div>
                 <br>
-		           <button class="btn btn-primary">Spremi</button>
-               <a href="/podaciKolegij" role="button"><button class="btn btn-danger">Odustani</button></a>
+		           <button type="submit" class="btn btn-primary">Spremi</button>
+                   <a href="/podaciKolegij" role="button"><button class="btn btn-danger">Odustani</button></a>
               </form>
                 </div>
               </div>

@@ -11,6 +11,7 @@ const User = require('./models/User.js');
 const ToDo = require('./models/ToDo.js');
 const Kolegij = require('./models/Kolegij.js');
 const Profesor = require('./models/Profesor.js');
+const Asistent = require('./models/Asistent.js');
 
 var app = express();
 
@@ -264,11 +265,45 @@ router.get('/unosProfesora', function(req, res){
 router.get('/urediProfesora/:id', function(req, res) {
 	var profesor = new Profesor(req.body);
 
-	Note.findOne({_id: req.params.id}).exec(function(err, note){
+	Profesor.findOne({_id: req.params.id}).exec(function(err, note){
 		if(err){
 			console.log("Greška u uređivanju podataka o profesori");
 		} else {
 			res.render('urediProfesora.ejs', {profesor: profesor});
+		}
+	});
+});
+
+//UNOS ASISTENTA
+router.post('/unosAsistenta', function(req, res) {
+	const asistent = new Asistent({
+			//kolegij: req.kolegij.id,
+			imeAsistenta: req.body.imeAsistenta,
+			prezimeAsistenta: req.body.prezimeAsistenta,
+			emailAsistenta: req.body.emailAsistenta,
+			uredAsistenta: req.body.uredProfesora
+		});
+		asistent.save().then(data => {
+			console.log("Uspješno unesen novi asistent");
+		}).catch(error => {
+			console.log("Asistent nije spremljen")
+		})
+	res.redirect('/podaciKolegij');
+})
+
+router.get('/unosAsistenta', function(req, res){
+	res.sendFile(path.join(__dirname + '/views' + '/unosAsistenta.html'));
+});
+
+//UREDI PODATKE O ASISTENTU
+router.get('/urediAsistenta/:id', function(req, res) {
+	var asistent = new Asistent(req.body);
+
+	Asistent.findOne({_id: req.params.id}).exec(function(err, note){
+		if(err){
+			console.log("Greška u uređivanju podataka o asistentu");
+		} else {
+			res.render('urediAsistenta.ejs', {asistent: asistent});
 		}
 	});
 });
