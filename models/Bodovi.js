@@ -11,10 +11,12 @@ const bodoviSchema = mongoose.Schema({
     },
 	ostaloBodovi: {
 		type: Number
-	},
+	}
+	/* ne treba polje za to jer će se kod ispisa računati ukupno
     ukupniBodovi: {
 		type: Number
 	}
+	*/
 })
 
 module.exports = mongoose.model('Bodovi', bodoviSchema);

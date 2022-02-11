@@ -12,6 +12,7 @@ const ToDo = require('./models/ToDo.js');
 const Kolegij = require('./models/Kolegij.js');
 const Profesor = require('./models/Profesor.js');
 const Asistent = require('./models/Asistent.js');
+const Bodovi = require('./models/Bodovi.js');
 
 var app = express();
 
@@ -191,6 +192,7 @@ router.get('/podaciKolegij', function(req, res){
 });
 
 const { response } = require('express');
+const { readSync } = require('fs');
 app.set('view engine', 'ejs');
 
 // STVARANJE NOVOG KOLEGIJA
@@ -308,6 +310,25 @@ router.get('/urediAsistenta/:id', function(req, res) {
 	});
 });
 
+//UNOS BODOVA
+router.post('/unosBodova', function(req, res) {
+	const bodovi = new Bodovi({
+			//kolegij: req.kolegij.id,
+			kolokvijBodovi: req.body.kolokvijBodovi,
+			ostaloBodovi: req.body.ostaloBodovi
+
+		});
+		bodovi.save().then(data => {
+			console.log("Uspješno uneseni bodovi");
+		}).catch(error => {
+			console.log("Bodovi nisu spremljeni")
+		})
+	res.redirect('/podaciKolegij');
+})
+
+router.get('/unosBodova', function(req, res){
+	res.sendFile(path.join(__dirname + '/views' + '/unosBodova.html'));
+});
 
 
 //SESSIONS
