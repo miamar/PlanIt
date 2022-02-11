@@ -1,18 +1,21 @@
 const mongoose = require('mongoose');
 const profesorSchema = mongoose.Schema({
-	user: {
+	/*user: {
 		type: String
-	},
+	},*/
 	kolegij: {
 		type: String
 	},
-	imePrezimeProfesora: { 
+	imeProfesora: { 
+		type: String
+    },
+	prezimeProfesora: { 
 		type: String
     },
 	emailProfesora: {
 		type: String
 	},
-	ured: {
+	uredProfesora: {
 		type: String
 	}
 })

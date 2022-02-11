@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const asistentSchema = mongoose.Schema({
-	user: {
+	/*user: {
 		type: String
-	},
+	},*/
 	kolegij: {
 		type: String
 	},

@@ -51,12 +51,7 @@
         </div>
        </div>
     </div>
-    <div class="row">
-        <div class="col-sm-12 col-12 d-flex justify-content-center" >
-            <a class="btn btn-primary" href="/unosPodatakaKolegiji" role="button" style="color: white;">Uredi podatke o kolegiju</a>
-        </div>
-        
-    </div>
+    
     <div class="row" style="margin-bottom: 1em;">
         <div class="col-sm-6 col-12 d-flex justify-content-center" >
             <div class="card text-white bg-secondary mb-3">
@@ -71,6 +66,13 @@
                     <p class="card-text">E-mail: mail@gmail.com</p>
                     <p class="card-text">Ured: broj</p>
                 </div>
+                <div class="card-footer"> 
+                  <a href="/unosProfesora"><button class="btn btn-light">Unesi</button></a>
+                  <a href="/urediProfesora"><button class="btn btn-light">Uredi</button></a>
+                  <!-- KAD OVA STRANICA NE BUDE HTML NEGO .EJS FILE
+                  <a href="/urediProfesora/<%= profesor._id %>"><button class="btn btn-light">Uredi</button></a>
+                  -->
+                </div>
               </div>
         </div>
         <div class="col-sm-6 col-12 d-flex justify-content-center" >
@@ -81,8 +83,13 @@
                     <p class="card-text">dd.mm.gg - kolokvij</p>
                     <p class="card-text">dd.mm.gg - ostalo</p>
                 </div>
+                <div class="card-footer"> 
+                  <a href="#"><button class="btn btn-light">Unesi</button></a>
+                  <a href="#"><button class="btn btn-light">Uredi</button></a>
+                </div>
               </div>
         </div>
+        <div class="col-sm-2 col-12"></div>
         <div class="col-sm-4 col-12 d-flex justify-content-center" >
             <div class="card text-white bg-success mb-3">
                 <div class="card-header"><h5>Broj ostvarenih bodova</h5></div>
@@ -90,6 +97,10 @@
                     <p class="card-text"><b>Kolokvij:</b> 40</p>
                     <p class="card-text"><b>Ostalo:</b> 20</p>
                     <p class="card-text"><b>Ukupno:</b> 60</p>
+                </div>
+                <div class="card-footer"> 
+                  <a href="#"><button class="btn btn-light">Unesi</button></a>
+                  <a href="#"><button class="btn btn-light">Uredi</button></a>
                 </div>
               </div>
         </div>
@@ -101,8 +112,14 @@
                     <p class="card-text">dd.mm.gg - kolokvij</p>
                     <p class="card-text">dd.mm.gg - ostalo</p>
                 </div>
+                <div class="card-footer"> 
+                  <a href="#"><button class="btn btn-light">Unesi</button></a>
+                  <a href="#"><button class="btn btn-light">Uredi</button></a>
+                </div>
               </div>
         </div>
+        <div class="col-sm-2 col-12"></div>
+        <div class="col-sm-3 col-12"></div>
         <div class="col-sm-5 col-12 d-flex justify-content-center" >
             <div class="card bg-light mb-3">
                 <div class="card-header"><h5>Evidencija dolaznosti</h5></div>
@@ -115,11 +132,15 @@
                   <hr>
                   <p class="card-text"><input type="checkbox" id="check" name="check"><label for="check"> dd.mm.gg.</label></p>
                 </div>
+                <div class="card-footer"> 
+                  <a href="#"><button class="btn btn-secondary">Unesi</button></a>
+                  <a href="#"><button class="btn btn-secondary">Uredi</button></a>
+                </div>
               </div>
         </div>
     </div>
-    
     </div>
+
     <div class="footer">
       <p style="margin-top: 1em;"><a href="/index"><button type="button" class="btn" ><img src="/icons/home-fill.svg" style="width: 1em;"></button></a>
         <a href="/mojprofil"><button type="button" class="btn"><img src="/icons/person.svg" style="width: 1em;" ></button></a>

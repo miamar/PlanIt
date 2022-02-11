@@ -10,6 +10,7 @@ const session = require('express-session');
 const User = require('./models/User.js');
 const ToDo = require('./models/ToDo.js');
 const Kolegij = require('./models/Kolegij.js');
+const Profesor = require('./models/Profesor.js');
 
 var app = express();
 
@@ -237,6 +238,28 @@ router.get("/izbrisiKolegij/:id", (req,res,next)=>{
     })
   res.redirect('/brisanjeKolegija');
 })
+
+//UNOS PROFESORA
+router.post('/unosProfesora', function(req, res) {
+	const profesor = new Profesor({
+			//kolegij: req.kolegij.id,
+			imeProfesora: req.body.imeProfesora,
+			prezimeProfesora: req.body.prezimeProfesora,
+			emailProfesora: req.body.emailProfesora,
+			uredProfesora: req.body.uredProfesora
+		});
+		profesor.save().then(data => {
+			console.log("Successfully created a new Note!");
+		}).catch(error => {
+			console.log("Error - note not saved!")
+		})
+	res.redirect('/podaciKolegij');
+})
+
+router.get('/unosProfesora', function(req, res){
+	res.sendFile(path.join(__dirname + '/views' + '/unosProfesora.html'));
+});
+
 
 //SESSIONS
 router.use(function(req, res, next) {
