@@ -61,17 +61,20 @@
                     <p class="card-text">Prof. dr. sc. Ime Prezime</p>
                     <p class="card-text">E-mail: mail@gmail.com</p>
                     <p class="card-text">Ured: broj</p>
+                    <a href="/unosProfesora"><button class="btn btn-light btn-sm">Unesi</button></a>
+                    <a href="/urediProfesora"><button class="btn btn-light btn-sm">Uredi</button></a>
+                    <!-- KAD OVA STRANICA NE BUDE HTML NEGO .EJS FILE
+                    <a href="/urediProfesora/<%= profesor._id %>"><button class="btn btn-light btn-sm">Uredi</button></a>
+                    -->
                     <p class="card-text"><b>Asistent:</b></p>
                     <p class="card-text">Prof. dr. sc. Ime Prezime</p>
                     <p class="card-text">E-mail: mail@gmail.com</p>
                     <p class="card-text">Ured: broj</p>
-                </div>
-                <div class="card-footer"> 
-                  <a href="/unosProfesora"><button class="btn btn-light">Unesi</button></a>
-                  <a href="/urediProfesora"><button class="btn btn-light">Uredi</button></a>
-                  <!-- KAD OVA STRANICA NE BUDE HTML NEGO .EJS FILE
-                  <a href="/urediProfesora/<%= profesor._id %>"><button class="btn btn-light">Uredi</button></a>
-                  -->
+                    <a href="/unosAsistenta"><button class="btn btn-light btn-sm">Unesi</button></a>
+                    <a href="/urediAsistenta"><button class="btn btn-light btn-sm">Uredi</button></a>
+                    <!-- KAD OVA STRANICA NE BUDE HTML NEGO .EJS FILE
+                    <a href="/urediAsistenta/<%= asistent._id %>"><button class="btn btn-light btn-sm">Uredi</button></a>
+                    -->
                 </div>
               </div>
         </div>
