@@ -267,7 +267,7 @@ router.get('/unosProfesora', function(req, res){
 router.get('/urediProfesora/:id', function(req, res) {
 	var profesor = new Profesor(req.body);
 
-	Profesor.findOne({_id: req.params.id}).exec(function(err, note){
+	Profesor.findOne({_id: req.params.id}).exec(function(err, profesor){
 		if(err){
 			console.log("Greška u uređivanju podataka o profesori");
 		} else {
@@ -301,7 +301,7 @@ router.get('/unosAsistenta', function(req, res){
 router.get('/urediAsistenta/:id', function(req, res) {
 	var asistent = new Asistent(req.body);
 
-	Asistent.findOne({_id: req.params.id}).exec(function(err, note){
+	Asistent.findOne({_id: req.params.id}).exec(function(err, asistent){
 		if(err){
 			console.log("Greška u uređivanju podataka o asistentu");
 		} else {
@@ -330,6 +330,18 @@ router.get('/unosBodova', function(req, res){
 	res.sendFile(path.join(__dirname + '/views' + '/unosBodova.html'));
 });
 
+//UREDI BODOVE
+router.get('/urediBodove/:id', function(req, res) {
+	var bodovi = new Bodovi(req.body);
+
+	Bodovi.findOne({_id: req.params.id}).exec(function(err, bodovi){
+		if(err){
+			console.log("Greška u uređivanju bodova");
+		} else {
+			res.render('urediBodove.ejs', {bodovi: bodovi});
+		}
+	});
+});
 
 //SESSIONS
 router.use(function(req, res, next) {
