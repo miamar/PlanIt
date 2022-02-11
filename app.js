@@ -249,9 +249,9 @@ router.post('/unosProfesora', function(req, res) {
 			uredProfesora: req.body.uredProfesora
 		});
 		profesor.save().then(data => {
-			console.log("Successfully created a new Note!");
+			console.log("Uspješno unesen novi profesor");
 		}).catch(error => {
-			console.log("Error - note not saved!")
+			console.log("Profesor nije spremljen")
 		})
 	res.redirect('/podaciKolegij');
 })
@@ -259,6 +259,20 @@ router.post('/unosProfesora', function(req, res) {
 router.get('/unosProfesora', function(req, res){
 	res.sendFile(path.join(__dirname + '/views' + '/unosProfesora.html'));
 });
+
+//UREDI PODATKE O PROFESORU
+router.get('/urediProfesora/:id', function(req, res) {
+	var profesor = new Profesor(req.body);
+
+	Note.findOne({_id: req.params.id}).exec(function(err, note){
+		if(err){
+			console.log("Greška u uređivanju podataka o profesori");
+		} else {
+			res.render('urediProfesora.ejs', {profesor: profesor});
+		}
+	});
+});
+
 
 
 //SESSIONS
