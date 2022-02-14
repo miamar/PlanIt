@@ -6,6 +6,8 @@ const path = require('path');
 const ejs = require('ejs');
 const passport = require('passport');
 const session = require('express-session');
+var fs = require('fs');
+require('dotenv/config');
 
 const User = require('./models/User.js');
 const ToDo = require('./models/ToDo.js');
@@ -23,6 +25,18 @@ app.use(express.json());
 //Server ne prepoznaje statičke fileove pa ih se mora staviti u public i označiti s express.static()
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
+
+//set up multer for storing uploaded files
+var multer = require('multer');
+var storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads')
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now())
+    }
+});
+var upload = multer({ storage: storage });
 
 /* SPAJANJE NA SERVER */
 app.listen(3030, () => {
@@ -204,7 +218,11 @@ router.post('/unosKolegija', function(req, res) {
 			nazivKolegija : req.body.nazivKolegija,
 			dvoranaPredavanje : req.body.dvoranaPredavanje,
 			dvoranaVjezbe : req.body.dvoranaVjezbe,
-			modelNastave : req.body.modelNastave
+			modelNastave : req.body.modelNastave,
+			img: {
+				data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
+				contentType: 'image/png'
+			}
 		});
 		note.save().then(data => {
 			console.log("Uspješno kreiran novi kolegij!");
