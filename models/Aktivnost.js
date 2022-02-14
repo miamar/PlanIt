@@ -13,11 +13,8 @@ const aktivnostSchema = mongoose.Schema({
 	nazivAktivnosti: {
 		type: String
 	},
-	rokAktivnosti: {
+	datumAktivnosti: {
 		type: Date
-	},
-	nazivKolegija: {
-		type: String
 	}
 })
 

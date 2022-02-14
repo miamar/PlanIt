@@ -14,6 +14,7 @@ const Profesor = require('./models/Profesor.js');
 const Asistent = require('./models/Asistent.js');
 const Bodovi = require('./models/Bodovi.js');
 const Dolaznost = require('./models/Dolaznost.js');
+const Aktivnost = require('./models/Aktivnost.js');
 
 var app = express();
 
@@ -375,6 +376,38 @@ router.get('/urediDolaznost/:id', function(req, res) {
 	});
 });
 
+//UNOS AKTIVNOSTI/ISPITA
+router.post('/unosIspita', function(req, res) {
+	const aktivnost = new Aktivnost({
+			//kolegij: req.kolegij.id,
+			tipAktivnosti: req.body.tipAktivnosti,
+			nazivAktivnosti: req.body.nazivAktivnosti,
+			datumAktivnosti: req.body.datum
+		});
+		aktivnost.save().then(data => {
+			console.log("Uspješno unesena aktivnost");
+		}).catch(error => {
+			console.log("Aktivnost nije spremljena")
+		})
+	res.redirect('/podaciKolegij');
+})
+
+router.get('/unosIspita', function(req, res){
+	res.sendFile(path.join(__dirname + '/views' + '/unosIspita.html'));
+});
+
+//UREDI AKTIVNOSTI/ISPITE
+router.get('/urediIspite/:id', function(req, res) {
+	var aktivnost = new Aktivnost(req.body);
+
+	Aktivnost.findOne({_id: req.params.id}).exec(function(err, aktivnost){
+		if(err){
+			console.log("Greška u uređivanju aktivnosti");
+		} else {
+			res.render('urediIspite.ejs', {aktivnost: aktivnost});
+		}
+	});
+});
 
 //SESSIONS
 router.use(function(req, res, next) {
