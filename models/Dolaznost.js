@@ -11,4 +11,4 @@ const dolaznostSchema = mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('Asistent', dolaznostSchema);
+module.exports = mongoose.model('Dolaznost', dolaznostSchema);

@@ -13,6 +13,7 @@ const Kolegij = require('./models/Kolegij.js');
 const Profesor = require('./models/Profesor.js');
 const Asistent = require('./models/Asistent.js');
 const Bodovi = require('./models/Bodovi.js');
+const Dolaznost = require('./models/Dolaznost.js');
 
 var app = express();
 
@@ -342,6 +343,38 @@ router.get('/urediBodove/:id', function(req, res) {
 		}
 	});
 });
+
+//UNOS DOLAZNOSTI
+router.post('/unosDolaznosti', function(req, res) {
+	const dolaznost = new Dolaznost({
+			//kolegij: req.kolegij.id,
+			datum: req.body.datum
+		});
+		dolaznost.save().then(data => {
+			console.log("Uspješno unesen datum u dolaznost");
+		}).catch(error => {
+			console.log("Datum nije spremljen")
+		})
+	res.redirect('/podaciKolegij');
+})
+
+router.get('/unosDolaznosti', function(req, res){
+	res.sendFile(path.join(__dirname + '/views' + '/unosDolaznosti.html'));
+});
+
+//UREDI DOLAZNOST
+router.get('/urediDolaznost/:id', function(req, res) {
+	var dolaznost = new Dolaznost(req.body);
+
+	Dolaznost.findOne({_id: req.params.id}).exec(function(err, dolaznost){
+		if(err){
+			console.log("Greška u uređivanju datuma dolaznsoti");
+		} else {
+			res.render('urediDolaznost.ejs', {dolaznost: dolaznost});
+		}
+	});
+});
+
 
 //SESSIONS
 router.use(function(req, res, next) {

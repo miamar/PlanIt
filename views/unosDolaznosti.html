@@ -56,23 +56,21 @@
     <div class="row justify-content-center" style="margin-top: 1em; margin-bottom: 1em;">
         <div class="col-sm-6 col-12 d-flex justify-content-center" >
             <div class="card bg-light mb-3">
-                <div class="card-header"><h5>Ostvareni bodovi</h5></div>
+                <div class="card-header"><h5>Evidencija dolaznosti</h5></div>
                 <div class="card-body">
-                  <form action="/unosBodova" method="post">
+                  <form action="/unosDolaznosti" method="post"> 
                     <div class="form-group">
-                        <label class="from-control">Kolokviji</label>
-                        <input type="number" class="form-control" id="bodoviKolokvij" name="bodoviKolokvij">
-                    </div>
-                    <div class="form-group">
-                        <label class="from-control">Ostalo</label>
-                        <input type="number" class="form-control" id="bodoviOstalo" name="bodoviOstalo">
+                        <label class="datum">Datum predavanja/vježbi: </label>
+                        <input type="date" id="datum" name="datum">
                     </div>
                     <br>
-		              <button class="btn btn-primary">Spremi</button>
-                  <a href="/podaciKolegij" role="button"><button class="btn btn-danger">Odustani</button></a>
+                    <br>
+                    <button class="btn btn-primary">Spremi</button>
+                    <a href="/podaciKolegij" role="button"><button class="btn btn-danger">Odustani</button></a>
               </form>
                 </div>
               </div>
+              
         </div>
       
     </div>
