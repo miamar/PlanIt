@@ -202,11 +202,11 @@ router.get('/unosPodatakaKolegiji', function(req, res){
 router.get('/unosRasporeda', function(req, res){
 	res.sendFile(path.join(__dirname + '/views' + '/unosRasporeda.html'));
 });
-
+/*
 router.get('/podaciKolegij', function(req, res){
 	res.sendFile(path.join(__dirname + '/views' + '/podaciKolegij.html'));
 });
-
+*/
 const { response } = require('express');
 const { readSync } = require('fs');
 app.set('view engine', 'ejs');
@@ -263,7 +263,7 @@ router.get("/izbrisiKolegij/:id", (req,res,next)=>{
 })
 
 //UNOS PROFESORA
-router.post('/unosProfesora', function(req, res) {
+router.post("/unosProfesora", function(req, res) {
 	const profesor = new Profesor({
 			//kolegij: req.kolegij.id,
 			imeProfesora: req.body.imeProfesora,
@@ -276,25 +276,47 @@ router.post('/unosProfesora', function(req, res) {
 		}).catch(error => {
 			console.log("Profesor nije spremljen")
 		})
-	res.redirect('/podaciKolegij');
+	res.redirect("/podaciKolegij");
 })
 
-router.get('/unosProfesora', function(req, res){
-	res.sendFile(path.join(__dirname + '/views' + '/unosProfesora.html'));
+router.get("/unosProfesora", function(req, res){
+	res.sendFile(path.join(__dirname + "/views" + "/unosProfesora.html"));
+});
+
+//DOHVAĆANJE PODATAKA O PROFESORU
+router.get('/podaciKolegij', function(req, res) {
+	Profesor.find({}).exec(function(err, profesori){
+		if (err) throw err;
+		//console.log(req.user.id);
+		res.render('podaciKolegij.ejs', { "profesori" : profesori });
+	});
 });
 
 //UREDI PODATKE O PROFESORU
-router.get('/urediProfesora/:id', function(req, res) {
+router.get("/urediProfesora/:id", function(req, res) {
 	var profesor = new Profesor(req.body);
 
 	Profesor.findOne({_id: req.params.id}).exec(function(err, profesor){
 		if(err){
 			console.log("Greška u uređivanju podataka o profesori");
 		} else {
-			res.render('urediProfesora.ejs', {profesor: profesor});
+			res.render("podaciKolegij.ejs", {profesor: profesor});
 		}
 	});
 });
+
+router.post('/izmjenaProfesora/:id', function(req, res) {
+	console.log("update is in process...");
+	Profesor.findByIdAndUpdate(req.params.id, {
+		$set :{ imeProfesora: req.body.imeProfesora, prezimeProfesora: req.body.prezimeProfesora, emailProfesora: req.body.emailProfesora, uredProfesora: req.body.uredProfesora } }, {new: true}, function (err, profesor){
+			if (err){
+				console.log(err);
+				res.render('/urediProfesora', {profesor:req.body});
+			}
+			res.redirect("/podaciKolegij");
+		});
+});	
+
 
 //UNOS ASISTENTA
 router.post('/unosAsistenta', function(req, res) {

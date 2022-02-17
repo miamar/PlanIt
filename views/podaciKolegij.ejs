@@ -58,23 +58,22 @@
                 <div class="card-header"><h5>Kontakti</h5></div>
                 <div class="card-body">
                     <p class="card-text"><b>Profesor:</b></p>
-                    <p class="card-text">Prof. dr. sc. Ime Prezime</p>
-                    <p class="card-text">E-mail: mail@gmail.com</p>
-                    <p class="card-text">Ured: broj</p>
+                    <% profesori.forEach(function (profesor) { %>
+                    <p class="card-text">Prof. dr. sc. <%= profesor.imeProfesora %> <%= profesor.prezimeProfesora %></p>
+                    <p class="card-text">E-mail: <%= profesor.emailProfesora %></p>
+                    <p class="card-text">Ured: <%= profesor.uredProfesora %></p>
                     <a href="/unosProfesora"><button class="btn btn-light btn-sm">Unesi</button></a>
                     <a href="/urediProfesora"><button class="btn btn-light btn-sm">Uredi</button></a>
-                    <!-- KAD OVA STRANICA NE BUDE HTML NEGO .EJS FILE
+                    <!-- KAD OVA STRANICA NE BUDE HTML NEGO .EJS FILE                     -->
                     <a href="/urediProfesora/<%= profesor._id %>"><button class="btn btn-light btn-sm">Uredi</button></a>
-                    -->
+                    <% }) %>
                     <p class="card-text"><b>Asistent:</b></p>
                     <p class="card-text">Prof. dr. sc. Ime Prezime</p>
                     <p class="card-text">E-mail: mail@gmail.com</p>
                     <p class="card-text">Ured: broj</p>
                     <a href="/unosAsistenta"><button class="btn btn-light btn-sm">Unesi</button></a>
                     <a href="/urediAsistenta"><button class="btn btn-light btn-sm">Uredi</button></a>
-                    <!-- KAD OVA STRANICA NE BUDE HTML NEGO .EJS FILE
-                    <a href="/urediAsistenta/<%= asistent._id %>"><button class="btn btn-light btn-sm">Uredi</button></a>
-                    -->
+                    
                 </div>
               </div>
         </div>

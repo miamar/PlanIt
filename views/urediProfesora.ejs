@@ -58,23 +58,23 @@
             <div class="card bg-light mb-3">
                 <div class="card-header"><h5>Kontakt (profesor)</h5></div>
                 <div class="card-body">
-                  <form action="/urediProfesora/<%= profesor._id %>" method="post"> 
+                  <form action="/izmjenaProfesora/<%= profesor._id %>" method="post"> 
                     <p class="card-text"><b>Profesor:</b></p>
                     <div class="form-group">
                         <label class="from-control">Ime</label>
-                        <input type="text" class="form-control" id="imeProfesora" name="imeProfesora" >
+                        <input type="text" class="form-control" id="imeProfesora" name="imeProfesora" value="<%= profesor.imeProfesora %>">
                     </div>
                     <div class="form-group">
                         <label class="from-control">Prezime</label>
-                        <input type="text" class="form-control" id="preziimeProfesora" name="prezimeProfesora">
+                        <input type="text" class="form-control" id="preziimeProfesora" name="prezimeProfesora" value="<%= profesor.prezimeProfesora %>">
                       </div>
                 <div class="form-group">
                   <label>E-mail</label>
-                  <input type="email" class="form-control" id="emailProfesora" name="emailProfesora">
+                  <input type="email" class="form-control" id="emailProfesora" name="emailProfesora" value="<%= profesor.emailProfesora %>">
                 </div>
                 <div class="form-group">
                   <label>Ured</label>
-                  <input type="text" class="form-control" id="uredProfesora" name="uredProfesora">
+                  <input type="text" class="form-control" id="uredProfesora" name="uredProfesora" value="<%= profesor.uredProfesora %>">
                 </div>
                 <br>
 		           <button type="submit" class="btn btn-primary">Spremi</button>
