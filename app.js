@@ -339,6 +339,16 @@ router.get('/unosAsistenta', function(req, res){
 	res.sendFile(path.join(__dirname + '/views' + '/unosAsistenta.html'));
 });
 
+
+//DOHVAĆANJE PODATAKA O ASISTENTU
+router.get('/podaciKolegij', function(req, res) {
+	Asistent.find({}).exec(function(err, asistenti){
+		if (err) throw err;
+		//console.log(req.user.id);
+		res.render('podaciKolegij.ejs', { "asistenti" : asistenti });
+	});
+});
+
 //UREDI PODATKE O ASISTENTU
 router.get('/urediAsistenta/:id', function(req, res) {
 	var asistent = new Asistent(req.body);
@@ -434,6 +444,15 @@ router.post('/unosIspita', function(req, res) {
 
 router.get('/unosIspita', function(req, res){
 	res.sendFile(path.join(__dirname + '/views' + '/unosIspita.html'));
+});
+
+//DOHVAĆANJE PODATAKA O AKTIVNOSTI
+router.get('/podaciKolegij', function(req, res) {
+	Aktivnost.find({}).exec(function(err, aktivnosti){
+		if (err) throw err;
+		//console.log(req.user.id);
+		res.render('podaciKolegij.ejs', { "aktivnosti" : aktivnosti });
+	});
 });
 
 //UREDI AKTIVNOSTI/ISPITE
