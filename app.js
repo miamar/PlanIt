@@ -203,7 +203,7 @@ app.set('view engine', 'ejs');
 // STVARANJE NOVOG KOLEGIJA
 router.post('/unosKolegija', function(req, res) {
 	const kolegij = new Kolegij({
-			//user : req.user.id,
+			user : req.user.id,
 			nazivKolegija : req.body.nazivKolegija,
 			dvoranaPredavanje : req.body.dvoranaPredavanje,
 			dvoranaVjezbe : req.body.dvoranaVjezbe,
