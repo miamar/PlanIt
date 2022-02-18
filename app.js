@@ -223,7 +223,7 @@ router.get('/unosKolegija', function(req, res) {
 
 //DOHVAĆANJE KOLEGIJA
 router.get('/kolegiji', function(req, res) {
-	Kolegij.find({/*user: req.user.id*/}).exec(function(err, kolegiji){
+	Kolegij.find({user: req.user.id}).exec(function(err, kolegiji){
 		if (err) throw err;
 		//console.log(req.user.id);
 		res.render('kolegiji.ejs', { "kolegiji" : kolegiji });
@@ -307,7 +307,7 @@ router.post('/izmjenaProfesora/:id', function(req, res) {
 //UNOS ASISTENTA
 router.post('/unosAsistenta', function(req, res) {
 	const asistent = new Asistent({
-			//kolegij: req.kolegij.id,
+			kolegij: req.kolegij.id,
 			imeAsistenta: req.body.imeAsistenta,
 			prezimeAsistenta: req.body.prezimeAsistenta,
 			emailAsistenta: req.body.emailAsistenta,
