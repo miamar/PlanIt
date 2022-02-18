@@ -67,6 +67,14 @@
                     <!-- KAD OVA STRANICA NE BUDE HTML NEGO .EJS FILE                     -->
                     <a href="/urediProfesora/<%= profesor._id %>"><button class="btn btn-light btn-sm">Uredi</button></a>
                     <% }) %>
+                    <p class="card-text"><b>Asistent:</b></p>
+                    <% asistenti.forEach(function (asistent) { %>
+                    <p class="card-text">Prof. dr. sc.  <%= asistent.imeAsistenta %> <%= asistent.prezimeAsistenta %></p>
+                    <p class="card-text">E-mail: <%= asistent.emailAsistenta %></p>
+                    <p class="card-text">Ured: <%= asistent.uredAsistenta %></p> <!--ili mozda urediAsistenta-->
+                    <a href="/unosAsistenta"><button class="btn btn-light btn-sm">Unesi</button></a>
+                    <a href="/urediAsistenta/<%= asistent._id %>"><button class="btn btn-light btn-sm">Uredi</button></a>
+                    <% }) %>              
                     
                 </div>
               </div>

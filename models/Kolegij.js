@@ -14,12 +14,7 @@ const kolegijSchema = mongoose.Schema({
 	},
 	modelNastave: {
 		type: String
-	},
-	img:
-    {
-        data: Buffer, //Buffer allows us to store our image as data in the form of arrays
-        contentType: String
-    }
+	}
 })
 
 module.exports = mongoose.model('Kolegij', kolegijSchema);

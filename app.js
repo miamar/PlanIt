@@ -26,17 +26,6 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-//set up multer for storing uploaded files
-var multer = require('multer');
-var storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, 'uploads')
-    },
-    filename: (req, file, cb) => {
-        cb(null, file.fieldname + '-' + Date.now())
-    }
-});
-var upload = multer({ storage: storage });
 
 /* SPAJANJE NA SERVER */
 app.listen(3030, () => {
@@ -213,21 +202,17 @@ app.set('view engine', 'ejs');
 
 // STVARANJE NOVOG KOLEGIJA
 router.post('/unosKolegija', function(req, res) {
-	const note = new Kolegij({
+	const kolegij = new Kolegij({
 			//user : req.user.id,
 			nazivKolegija : req.body.nazivKolegija,
 			dvoranaPredavanje : req.body.dvoranaPredavanje,
 			dvoranaVjezbe : req.body.dvoranaVjezbe,
-			modelNastave : req.body.modelNastave,
-			img: {
-				data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
-				contentType: 'image/png'
-			}
+			modelNastave : req.body.modelNastave
 		});
-		note.save().then(data => {
+		kolegij.save().then(data => {
 			console.log("Uspješno kreiran novi kolegij!");
 		}).catch(error => {
-			console.log("Error - note not saved!")
+			console.log("Error")
 		})
 	res.redirect('/kolegiji');
 })
@@ -254,7 +239,7 @@ router.get('/brisanjeKolegija', function(req, res) {
 	});
 });
 router.get("/izbrisiKolegij/:id", (req,res,next)=>{
-	var note = new Kolegij(req.body);
+	var kolegij = new Kolegij(req.body);
     Kolegij.findByIdAndRemove(req.params.id ,{useFindAndModify : false}, (err, kolegij)=> {
        if(err) console.log(err)
        console.log("Izbrisan kolegij: ", Kolegij);
@@ -303,6 +288,7 @@ router.get("/urediProfesora/:id", function(req, res) {
 			res.render("podaciKolegij.ejs", {profesor: profesor});
 		}
 	});
+
 });
 
 router.post('/izmjenaProfesora/:id', function(req, res) {
