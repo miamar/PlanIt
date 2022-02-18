@@ -268,12 +268,17 @@ router.get("/unosProfesora", function(req, res){
 	res.sendFile(path.join(__dirname + "/views" + "/unosProfesora.html"));
 });
 
-//DOHVAĆANJE PODATAKA O PROFESORU
-router.get('/podaciKolegij', function(req, res) {
+//DOHVAĆANJE PODATAKA O KOLEGIJU
+router.get('/podaciKolegij/:id', function(req, res) {
 	Profesor.find({}).exec(function(err, profesori){
 		if (err) throw err;
-		//console.log(req.user.id);
+		console.log(req.user.id);
 		res.render('podaciKolegij.ejs', { "profesori" : profesori });
+	});
+	Asistent.find({}).exec(function(err, asistenti){
+		if (err) throw err;
+		console.log(req.user.id);
+		res.render('podaciKolegij.ejs', { "asistenti" : asistenti });
 	});
 });
 
