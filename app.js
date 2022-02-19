@@ -192,11 +192,7 @@ router.get('/unosPodatakaKolegiji', function(req, res){
 router.get('/unosRasporeda', function(req, res){
 	res.sendFile(path.join(__dirname + '/views' + '/unosRasporeda.html'));
 });
-/*
-router.get('/podaciKolegij', function(req, res){
-	res.sendFile(path.join(__dirname + '/views' + '/podaciKolegij.html'));
-});
-*/
+
 const { response } = require('express');
 const { readSync } = require('fs');
 app.set('view engine', 'ejs');
