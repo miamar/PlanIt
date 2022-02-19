@@ -224,7 +224,7 @@ router.get('/unosKolegija', function(req, res) {
 
 //DOHVAĆANJE KOLEGIJA
 router.get('/kolegiji', function(req, res) {
-	Kolegij.find({user: req.user.id}).exec(function(err, kolegiji){
+	Kolegij.find({/*user: req.user.id*/}).exec(function(err, kolegiji){
 		if (err) throw err;
 		//console.log(req.user.id);
 		res.render('kolegiji.ejs', { "kolegiji" : kolegiji });
@@ -233,7 +233,7 @@ router.get('/kolegiji', function(req, res) {
 
 //BRISANJE KOLEGIJA
 router.get('/brisanjeKolegija', function(req, res) {
-	Kolegij.find({user: req.user.id}).exec(function(err, kolegiji){
+	Kolegij.find({/*user: req.user.id*/}).exec(function(err, kolegiji){
 		if (err) throw err;
 		//console.log(req.user.id);
 		res.render('brisanjeKolegija.ejs', { "kolegiji" : kolegiji });
@@ -269,12 +269,30 @@ router.post('/unosPodaciKolegij/:id', function(req,res){
 		console.log("Unos podataka o kolegiju neuspješan.")
 	})
 	res.redirect("/podaciKolegij/:id");
-})
+});
+
+//DOHVAĆANJE PODATAKA O KOLEGIJU
+router.get('/podaciKolegij', function(req, res) {
+	PodaciKolegij.find({}).exec(function(err, podaci){
+		if (err) throw err;
+		//console.log(req.user.id);
+		res.render('podaciKolegij.ejs', { "podaci" : podaci });
+    });
+});
+
+//DOHVAĆANJE PODATAKA O KOLEGIJU KAD IMA ID OD TOG KOLEGIJA
+router.get('/podaciKolegij/:id', function(req, res) {
+	PodaciKolegij.find({kolegij: req.params.id}).exec(function(err, podaci){
+		if (err) throw err;
+		//console.log(req.user.id);
+		res.render('podaciKolegij.ejs', { "podaci" : podaci });
+    });
+});
 
 //UNOS PROFESORA
 router.post("/unosProfesora", function(req, res) {
-	const profesor = new Profesor({
-			kolegij: req.kolegij.id,
+	const profesor = new PodaciKolegij({
+			/*kolegij: req.kolegij.id,*/
 			imeProfesora: req.body.imeProfesora,
 			prezimeProfesora: req.body.prezimeProfesora,
 			emailProfesora: req.body.emailProfesora,
@@ -286,24 +304,10 @@ router.post("/unosProfesora", function(req, res) {
 			console.log("Profesor nije spremljen")
 		})
 	res.redirect("/podaciKolegij");
-})
+});
 
 router.get("/unosProfesora", function(req, res){
 	res.sendFile(path.join(__dirname + "/views" + "/unosProfesora.html"));
-});
-
-//DOHVAĆANJE PODATAKA O KOLEGIJU
-router.get('/podaciKolegij/:id', function(req, res) {
-	Profesor.find({}).exec(function(err, profesori){
-		if (err) throw err;
-		console.log(req.user.id);
-		res.render('podaciKolegij.ejs', { "profesori" : profesori });
-	});
-	Asistent.find({}).exec(function(err, asistenti){
-		if (err) throw err;
-		console.log(req.user.id);
-		res.render('podaciKolegij.ejs', { "asistenti" : asistenti });
-	});
 });
 
 //UREDI PODATKE O PROFESORU
@@ -335,8 +339,8 @@ router.post('/izmjenaProfesora/:id', function(req, res) {
 
 //UNOS ASISTENTA
 router.post('/unosAsistenta', function(req, res) {
-	const asistent = new Asistent({
-			kolegij: req.kolegij.id,
+	const asistent = new PodaciKolegij({
+			/*kolegij: req.kolegij.id,*/
 			imeAsistenta: req.body.imeAsistenta,
 			prezimeAsistenta: req.body.prezimeAsistenta,
 			emailAsistenta: req.body.emailAsistenta,
@@ -379,7 +383,7 @@ router.get('/urediAsistenta/:id', function(req, res) {
 
 //UNOS BODOVA
 router.post('/unosBodova', function(req, res) {
-	const bodovi = new Bodovi({
+	const bodovi = new PodaciKolegij({
 			//kolegij: req.kolegij.id,
 			kolokvijBodovi: req.body.kolokvijBodovi,
 			ostaloBodovi: req.body.ostaloBodovi
