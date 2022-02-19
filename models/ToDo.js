@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 const toDoSchema = mongoose.Schema({
 	user: {
-	  type: String
+	  type: String,
+	  ref: 'User'
     },
 	textToDo: { 
 		type: String

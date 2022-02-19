@@ -8,10 +8,7 @@ const ejs = require('ejs');
 const session = require('express-session');
 var fs = require('fs');
 require('dotenv/config');
-
-const MongoClient = require('mongodb').MongoClient;
 const passport = require('passport');
-const Strategy = require('passport-local').Strategy;
 
 const User = require('./models/User.js');
 const ToDo = require('./models/ToDo.js');
