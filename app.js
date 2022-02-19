@@ -17,6 +17,7 @@ const Asistent = require('./models/Asistent.js');
 const Bodovi = require('./models/Bodovi.js');
 const Dolaznost = require('./models/Dolaznost.js');
 const Aktivnost = require('./models/Aktivnost.js');
+const PodaciKolegij = require('./models/PodaciKolegij.js');
 
 var app = express();
 
@@ -245,6 +246,29 @@ router.get("/izbrisiKolegij/:id", (req,res,next)=>{
        console.log("Izbrisan kolegij: ", Kolegij);
     })
   res.redirect('/brisanjeKolegija');
+})
+
+// UNOS PODACI KOLEGIJ
+router.post('/unosPodaciKolegij/:id', function(req,res){
+	const podaciKolegij = new PodaciKolegij({
+		kolegij: req.kolegij.id,
+		imeProfesora: req.body.imeProfesora,
+		prezimeProfesora: req.body.prezimeProfesora,
+		emailProfesora: req.body.emailProfesora,
+		uredProfesora: req.body.uredProfesora,
+		imeAsistenta: req.body.imeAsistenta,
+		prezimeAsistenta: req.body.prezimeAsistenta,
+		emailAsistenta: req.body.emailAsistenta,
+		uredAsistenta: req.body.uredProfesora,
+		kolokvijBodovi: req.body.kolokvijBodovi,
+		ostaloBodovi: req.body.ostaloBodovi
+	});
+	podaciKolegij.save().then(data => {
+		console.log("Uspješno uneseni podaci o kolegiju!");
+	}).catch(error => {
+		console.log("Unos podataka o kolegiju neuspješan.")
+	})
+	res.redirect("/podaciKolegij/:id");
 })
 
 //UNOS PROFESORA
