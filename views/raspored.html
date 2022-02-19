@@ -43,7 +43,7 @@
       
         <div class="row">
           <div class="col-sm-12 col-12 d-flex justify-content-center" >
-            <a class="btn btn-primary" href="/unosRasporeda" role="button">Dodaj novi raspored sati</a>
+            <!--<a class="btn btn-primary" href="/unosRasporeda" role="button">Dodaj novi raspored sati</a>-->
           </div>
     </div>
     <div class="row" style="margin-top: 1em;">
@@ -113,7 +113,28 @@
           </tr>
           <tr>
             <th scope="row">10:00</th>
-            <td><a href="#" style="color: white;">Bla bla</a></td>
+            <td><a href="#" data-bs-toggle="modal" data-bs-target="#myModal" style="color: white;">Bla bla</a></td>
+            <!--Modal-->
+            <div class="modal" id="myModal">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title">Unos novog rasporeda</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                  </div>
+                  <form action="/unosRasporeda" method="post">
+                  <div class="modal-body">
+                    <input type="novaAktivnost" class="form-control" id="novaAktivnost" name="novaAktivnost">
+                  </div>
+                  <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Spremi</button>
+                    <a href="/raspored"><button type="button" class="btn btn-danger" data-bs-dismiss="modal">Odustani</button></a>
+                  </div>
+                </form> 
+            
+                </div>
+              </div>
+            </div>
             <td><a href="#" style="color: white;">Bla bla</a></td>
             <td><a href="#" style="color: white;">Bla bla</a></td>
             <td><a href="#" style="color: white;">Bla bla</a></td>
@@ -121,7 +142,7 @@
           </tr>
           <tr>
             <th scope="row">10:15</th>
-            <td><a href="" style="color: white;">Bla bla</a></td>
+            <td><a href="#" style="color: white;">Bla bla</a></td>
             <td><a href="#" style="color: white;">Bla bla</a></td>
             <td><a href="#" style="color: white;">Bla bla</a></td>
             <td><a href="#" style="color: white;">Bla bla</a></td>
