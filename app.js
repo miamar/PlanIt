@@ -223,7 +223,7 @@ router.get('/unosKolegija', function(req, res) {
 
 //DOHVAĆANJE KOLEGIJA
 router.get('/kolegiji', function(req, res) {
-	Kolegij.find({/*user: req.user.id*/}).exec(function(err, kolegiji){
+	Kolegij.find({user: req.user.id}).exec(function(err, kolegiji){
 		if (err) throw err;
 		//console.log(req.user.id);
 		res.render('kolegiji.ejs', { "kolegiji" : kolegiji });
@@ -232,7 +232,7 @@ router.get('/kolegiji', function(req, res) {
 
 //BRISANJE KOLEGIJA
 router.get('/brisanjeKolegija', function(req, res) {
-	Kolegij.find({/*user: req.user.id*/}).exec(function(err, kolegiji){
+	Kolegij.find({user: req.user.id}).exec(function(err, kolegiji){
 		if (err) throw err;
 		//console.log(req.user.id);
 		res.render('brisanjeKolegija.ejs', { "kolegiji" : kolegiji });
@@ -250,7 +250,7 @@ router.get("/izbrisiKolegij/:id", (req,res,next)=>{
 //UNOS PROFESORA
 router.post("/unosProfesora", function(req, res) {
 	const profesor = new Profesor({
-			//kolegij: req.kolegij.id,
+			kolegij: req.kolegij.id,
 			imeProfesora: req.body.imeProfesora,
 			prezimeProfesora: req.body.prezimeProfesora,
 			emailProfesora: req.body.emailProfesora,
@@ -268,12 +268,17 @@ router.get("/unosProfesora", function(req, res){
 	res.sendFile(path.join(__dirname + "/views" + "/unosProfesora.html"));
 });
 
-//DOHVAĆANJE PODATAKA O PROFESORU
-router.get('/podaciKolegij', function(req, res) {
+//DOHVAĆANJE PODATAKA O KOLEGIJU
+router.get('/podaciKolegij/:id', function(req, res) {
 	Profesor.find({}).exec(function(err, profesori){
 		if (err) throw err;
-		//console.log(req.user.id);
+		console.log(req.user.id);
 		res.render('podaciKolegij.ejs', { "profesori" : profesori });
+	});
+	Asistent.find({}).exec(function(err, asistenti){
+		if (err) throw err;
+		console.log(req.user.id);
+		res.render('podaciKolegij.ejs', { "asistenti" : asistenti });
 	});
 });
 
@@ -307,7 +312,7 @@ router.post('/izmjenaProfesora/:id', function(req, res) {
 //UNOS ASISTENTA
 router.post('/unosAsistenta', function(req, res) {
 	const asistent = new Asistent({
-			//kolegij: req.kolegij.id,
+			kolegij: req.kolegij.id,
 			imeAsistenta: req.body.imeAsistenta,
 			prezimeAsistenta: req.body.prezimeAsistenta,
 			emailAsistenta: req.body.emailAsistenta,

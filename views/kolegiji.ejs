@@ -58,7 +58,7 @@
     <div class="row justify-content-center" style="margin-top: 1em; margin-bottom: 1em;">
       <% kolegiji.forEach(function (kolegij) { %>
       <div class="col-md-auto">
-        <a href="/podaciKolegij"><div class="card" style="width: 18rem;">
+        <a href="/podaciKolegij/<%= kolegij._id%>"><div class="card" style="width: 18rem;">
           <img src="/images/elektronickoGospodarstvo.jpg" class="card-img-top" alt="..."  style="height:12em;">
           <div class="card-body">
             <p class="card-text"><h4 class="text-left"><%= kolegij.nazivKolegija %></h4>
