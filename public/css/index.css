@@ -104,6 +104,10 @@ izvr-akt {
 	background-color: yellow;
 }
 
+td a {
+    display:block;
+    width:100%;
+}
 
 .box{
     padding: 5px;        
