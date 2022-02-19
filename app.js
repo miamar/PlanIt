@@ -18,6 +18,7 @@ const Bodovi = require('./models/Bodovi.js');
 const Dolaznost = require('./models/Dolaznost.js');
 const Aktivnost = require('./models/Aktivnost.js');
 const PodaciKolegij = require('./models/PodaciKolegij.js');
+const Predavanje = require('./models/Predavanje.js');
 
 var app = express();
 
@@ -196,6 +197,30 @@ router.get('/unosRasporeda', function(req, res){
 const { response } = require('express');
 const { readSync } = require('fs');
 app.set('view engine', 'ejs');
+
+// STVARANJE NOVOG RASPOREDA ZA 10 h
+router.post('/unos', function(req, res) {
+	const raspored = new Predavanje({
+		imeKolegija: req.body.kolegij,
+		dvoranaPredavanje: req.body.predavanje
+		});
+		raspored.save().then(data => {
+			console.log("Uspješno kreiran novi raspored za 10 h!");
+		}).catch(error => {
+			console.log("Error")
+		})
+	res.redirect('/prikazRasporeda');
+})
+
+//PRIKZA NAPRAVLJENOG RASPOREDA ZA 10 h
+router.get('/prikazRasporeda', function(req, res) {
+	Predavanje.find({/*user: req.user.id*/}).exec(function(err, raspored){
+		if (err) throw err;
+		//console.log(req.user.id);
+		res.render('prikazRasporeda.ejs', { "raspored" : raspored });
+	});
+});
+
 
 // STVARANJE NOVOG KOLEGIJA
 router.post('/unosKolegija', function(req, res) {
