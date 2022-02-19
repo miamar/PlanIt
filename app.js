@@ -7,14 +7,11 @@ const path = require('path');
 const ejs = require('ejs');
 const session = require('express-session');
 var fs = require('fs');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
 require('dotenv/config');
 
-const MongoClient = rewuire('mongodb').MongoClient;
+const MongoClient = require('mongodb').MongoClient;
 const passport = require('passport');
 const Strategy = require('passport-local').Strategy;
-const flash = require('connect-flash');
 
 const User = require('./models/User.js');
 const ToDo = require('./models/ToDo.js');
