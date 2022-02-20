@@ -59,7 +59,7 @@
       <% kolegiji.forEach(function (kolegij) { %>
       <div class="col-md-auto">
         <a href="/podaciKolegij/<%= kolegij._id%>"><div class="card" style="width: 18rem;">
-          <img src="/images/elektronickoGospodarstvo.jpg" class="card-img-top" alt="..."  style="height:12em;">
+          <img src="/uploads/images/<%= kolegij.img %>" class="card-img-top" alt="..."  style="height:12em;">
           <div class="card-body">
             <p class="card-text"><h4 class="text-left"><%= kolegij.nazivKolegija %></h4>
               <p><strong>P:<%= kolegij.dvoranaPredavanje %>, V:<%= kolegij.dvoranaVjezbe %> </strong></p>
