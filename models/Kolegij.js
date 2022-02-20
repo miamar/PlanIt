@@ -44,7 +44,11 @@ const kolegijSchema = mongoose.Schema({
     },
 	ostaloBodovi: {
 		type: Number
-	}
+	},
+	img: {
+		type: String,
+		default: 'placeholder.jpg',
+	  }
 })
 
 module.exports = mongoose.model('Kolegij', kolegijSchema);

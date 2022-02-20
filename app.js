@@ -7,8 +7,8 @@ const path = require('path');
 const ejs = require('ejs');
 const session = require('express-session');
 var fs = require('fs');
-require('dotenv/config');
 const passport = require('passport');
+const multer = require('multer')
 
 const User = require('./models/User.js');
 const ToDo = require('./models/ToDo.js');
@@ -213,7 +213,7 @@ router.post('/unos', function(req, res) {
 	res.redirect('/prikazRasporeda');
 })
 
-//PRIKZA NAPRAVLJENOG RASPOREDA ZA 10 h
+//PRIKZ NAPRAVLJENOG RASPOREDA ZA 10 h
 router.get('/prikazRasporeda', function(req, res) {
 	Predavanje.find({/*user: req.user.id*/}).exec(function(err, raspored){
 		if (err) throw err;
@@ -222,15 +222,31 @@ router.get('/prikazRasporeda', function(req, res) {
 	});
 });
 
+//spremanje slika
+const storage = multer.diskStorage({
+	//putanja za spremanje slika
+	destination:function(request, file, callback){
+		callback(null, './public/uploads/images');
+	},
+    filename:function(request, file, callback){
+		callback(null, Date.now() + file.originalname);
+	}
+});
+
+//upload paramteri, multer
+const upload = multer({
+	storage:storage
+})
 
 // STVARANJE NOVOG KOLEGIJA
-router.post('/unosKolegija', function(req, res) {
+router.post('/unosKolegija', upload.single('image'), function(req, res) {
 	const kolegij = new Kolegij({
 			user : req.user.id,
 			nazivKolegija : req.body.nazivKolegija,
 			dvoranaPredavanje : req.body.dvoranaPredavanje,
 			dvoranaVjezbe : req.body.dvoranaVjezbe,
-			modelNastave : req.body.modelNastave
+			modelNastave : req.body.modelNastave,
+			img: req.file.filename
 		});
 		kolegij.save().then(data => {
 			console.log("Uspješno kreiran novi kolegij!");
