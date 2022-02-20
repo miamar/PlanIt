@@ -55,8 +55,11 @@
      
         <div class="container">
             <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-md-6 col-12 justify-content-center">
+                <div class="col-md-2"></div>
+                <div class="col-md-8 col-12 justify-content-center">
+                  <div class="card bg-light mb-3">
+                    <div class="card-header"><h5>Unos podataka za novi kolegij</h5></div>
+                    <div class="card-body">
                   	<form class="text-right" action="/unosKolegija" method="post" enctype="multipart/form-data">
                       <div class="form-group">
                             <label class="from-control">Naziv kolegija</label>
@@ -78,15 +81,10 @@
                       <div class="form-group">
                         <label for="image">Dodaj sliku: </label>
                         <input type="file" class="form-control-file" name="image" id="image">
-                      </div> 
-                    	<br>
-						<div class="row justify-content-center" style="margin-top: 1em; margin-bottom: 1em;">
-							<div class="col-sm-6 col-12 d-flex justify-content-center" >
-								<div class="card bg-light mb-3">
-									<div class="card-header"><h5>Kontakt (profesor)</h5></div>
-									<div class="card-body">
-											<p class="card-text"><b>Profesor:</b></p>
-											<div class="form-group">
+                      </div>
+                      <br>
+                      <h5>Profesor: </h5>
+                      <div class="form-group">
 												<label class="from-control">Ime</label>
 												<input type="text" class="form-control" id="imeProfesora" name="imeProfesora" >
 											</div>
@@ -97,21 +95,10 @@
 										<div class="form-group">
 										  <label for="exampleInputEmail1">E-mail</label>
 										  <input type="email" class="form-control" id="emailProfesora" name="emailProfesora">
-										</div>
-										<div class="form-group">
-										  <label for="exampleInputPassword1">Ured</label>
-										  <input type="text" class="form-control" id="uredProfesora" name="uredProfesora">
-										</div>
-										<br>
-									</div>
-								  </div>
-							</div>
-							<div class="col-sm-6 col-12 d-flex justify-content-center" >
-								<div class="card bg-light mb-3">
-									<div class="card-header"><h5>Kontakt (asistent)</h5></div>
-									<div class="card-body">
-										<p class="card-text"><b>Asistent:</b></p>
-										<div class="form-group">
+										</div> 
+                    <br>
+                    <h5>Asistent: </h5>
+                    <div class="form-group">
 											<label class="from-control">Ime</label>
 											<input type="text" class="form-control" id="name">
 										</div>
@@ -127,18 +114,17 @@
 									  <label for="exampleInputPassword1">Ured</label>
 									  <input type="password" class="form-control" id="office">
 									</div>
-									<br>
-									
-								  
-									</div>
-								  </div>
-								  
-							</div><button class="btn btn-success">Spremi</button>
-                    	<a class="btn btn-danger" href="/kolegiji" role="button">Odustani</a>
+                      <br>
+                      <button class="btn btn-success">Spremi</button>
+                    	<a href="/kolegiji"><button class="btn btn-danger">Odustani</button></a>
                   	</form>
+                    </div>
+                  </div>
+                  </div>
+                  </div>
                 </div>
-            </div>
-		</div>
+        </div>
+	</div>
   
         <div class="footer">
             <p style="margin-top: 1em;"><a href="/index"><button type="button" class="btn" ><img src="/icons/home-fill.svg" style="width: 1em;"></button></a>
