@@ -57,8 +57,8 @@
             <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-6 col-12 justify-content-center">
-                  	<form class="text-right" action="/unosKolegija" method="post">
-                        <div class="form-group">
+                  	<form class="text-right" action="/unosKolegija" method="post" enctype="multipart/form-data">
+                      <div class="form-group">
                             <label class="from-control">Naziv kolegija</label>
                             <input type="text" class="form-control" name="nazivKolegija" id="nazivKolegija">
                         </div>
@@ -74,6 +74,11 @@
                       		<label for="modelNastave">Model nastave</label>
                       		<input type="text" class="form-control" name="modelNastave" id="modelNastave">
                     	</div>
+                      <br>
+                      <div class="form-group">
+                        <label for="image">Dodaj sliku: </label>
+                        <input type="file" class="form-control-file" name="image" id="image">
+                      </div> 
                     	<br>
                     	<button class="btn btn-success">Spremi</button>
                     	<a class="btn btn-danger" href="/kolegiji" role="button">Odustani</a>
