@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Unos podataka o kolegiju</title>
+  <title>Podaci o kolegiju</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="/css/index.css" rel="stylesheet" type="text/css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-
+    
     <div class="nav flex-column nav-pills sticky-top" id="v-pills-tab" role="tablist" aria-orientation="vertical">
         <a class="nav-link" id="v-pills-planit-tab" data-toggle="pill" href="/index" role="tab" aria-controls="v-pills-planit" aria-selected="false"><img src="/images/logo.png" style="width: 70%;"></a>
         <hr style="width: 80%; align-self: center;">
@@ -25,10 +24,11 @@
         <a class="nav-link" id="v-pills-obavijesti-tab" data-toggle="pill" href="/obavijesti" role="tab" aria-controls="v-pills-obavijesti" aria-selected="false">Obavijesti</a>
         <hr style="width: 80%; align-self: center;">
     </div>
+    
     <div class="container-fluid">
       <div class="row">
         <div class="col-6" style="margin-top: 1em;">
-           <p style="color: darkgray;">Unos podataka o kolegiju</p>
+           <p style="color: darkgray;">Naziv kolegija</p>
         </div>
         <div class="col-6" style="margin-top: 1em;">
             <div class="dropdown" style="float:right;">
@@ -43,46 +43,34 @@
          </div>
     </div>
     <div class="row">
-        <div class="col-12" style="margin-top: 1em;">
-          <div class="dropdown">
-            <a href="/kolegiji"><button type="button" class="btn btn-secondary ">
-              Kolegiji
-          </button></a>
-          </div>
-         </div>
-      </div>
-
-
-    <div class="row justify-content-center" style="margin-top: 1em; margin-bottom: 1em;">
-        <div class="col-sm-6 col-12 d-flex justify-content-center" >
+      <div class="col-12" style="margin-top: 1em;">
+        <div class="dropdown">
+          <a href="/kolegiji"><button type="button" class="btn btn-secondary ">
+            Kolegiji
+        </button></a>
+        </div>
+       </div>
+    </div>
+    <div class="row" style="margin-bottom: 1em;">
+        <div class="col-sm-5 col-12 d-flex justify-content-center" >
             <div class="card bg-light mb-3">
-                <div class="card-header"><h5>Kontakt asistenta</h5></div>
+                <div class="card-header"><h5>Evidencija dolaznosti</h5></div>
                 <div class="card-body">
-                  <form action="unosAsistenta" method="post"> 
-                    <p class="card-text"><b>Asistent:</b></p>
-                    <div class="form-group">
-                        <label class="from-control">Ime</label>
-                        <input type="text" class="form-control" id="imeAsistenta" name="imeAsistenta" >
-                    </div>
-                    <div class="form-group">
-                        <label class="from-control">Prezime</label>
-                        <input type="text" class="form-control" id="preziimeAsistenta" name="prezimeAsistenta">
-                      </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">E-mail</label>
-                  <input type="email" class="form-control" id="emailAsistenta" name="emailAsistenta">
+                  <p class="card-text"><input type="checkbox" id="check" name="check"><label for="check"> dd.mm.gg. </label><a href="/urediDolaznost"><button class="btn btn-secondary btn-sm">Uredi</button></a></p>
+                  <hr>
+                  <p class="card-text"><input type="checkbox" id="check" name="check"><label for="check"> dd.mm.gg.</label><a href="/urediDolaznost"><button class="btn btn-secondary btn-sm">Uredi</button></a></p>
+                  <hr>
+                  <p class="card-text"><input type="checkbox" id="check" name="check"><label for="check"> dd.mm.gg.</label><a href="/urediDolaznost"><button class="btn btn-secondary btn-sm">Uredi</button></a></p>
+                  <hr>
+                  <p class="card-text"><input type="checkbox" id="check" name="check"><label for="check"> dd.mm.gg.</label><a href="/urediDolaznost"><button class="btn btn-secondary btn-sm">Uredi</button></a></p>
                 </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword1">Ured</label>
-                  <input type="text" class="form-control" id="uredAsistenta" name="uredAsistenta">
-                </div>
-                <br>
-		           <button class="btn btn-primary">Spremi</button>
-               <a href="/podaciKolegij" role="button"><button class="btn btn-danger">Odustani</button></a>
-              </form>
+                <div class="card-footer"> 
+                  <a href="/unosDolaznosti"><button class="btn btn-secondary">Unesi novi datum</button></a>
+                  
                 </div>
               </div>
         </div>
+    </div>
     </div>
 
     <div class="footer">

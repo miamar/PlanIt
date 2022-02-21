@@ -246,7 +246,17 @@ router.post('/unosKolegija', upload.single('image'), function(req, res) {
 			dvoranaPredavanje : req.body.dvoranaPredavanje,
 			dvoranaVjezbe : req.body.dvoranaVjezbe,
 			modelNastave : req.body.modelNastave,
-			img: req.file.filename
+			img: req.file.filename,
+			imeProfesora: req.body.imeProfesora,
+		    prezimeProfesora: req.body.prezimeProfesora,
+		    emailProfesora: req.body.emailProfesora,
+		    uredProfesora: req.body.uredProfesora,
+		    imeAsistenta: req.body.imeAsistenta,
+		    prezimeAsistenta: req.body.prezimeAsistenta,
+		    emailAsistenta: req.body.emailAsistenta,
+		    uredAsistenta: req.body.uredProfesora,
+		    kolokvijBodovi: req.body.kolokvijBodovi,
+		    ostaloBodovi: req.body.ostaloBodovi
 		});
 		kolegij.save().then(data => {
 			console.log("Uspješno kreiran novi kolegij!");
@@ -286,35 +296,12 @@ router.get("/izbrisiKolegij/:id", (req,res,next)=>{
   res.redirect('/brisanjeKolegija');
 })
 
-// UNOS PODACI KOLEGIJ
-router.post('/unosPodaciKolegij/:id', function(req,res){
-	const podaciKolegij = new PodaciKolegij({
-		kolegij: req.kolegij.id,
-		imeProfesora: req.body.imeProfesora,
-		prezimeProfesora: req.body.prezimeProfesora,
-		emailProfesora: req.body.emailProfesora,
-		uredProfesora: req.body.uredProfesora,
-		imeAsistenta: req.body.imeAsistenta,
-		prezimeAsistenta: req.body.prezimeAsistenta,
-		emailAsistenta: req.body.emailAsistenta,
-		uredAsistenta: req.body.uredProfesora,
-		kolokvijBodovi: req.body.kolokvijBodovi,
-		ostaloBodovi: req.body.ostaloBodovi
-	});
-	podaciKolegij.save().then(data => {
-		console.log("Uspješno uneseni podaci o kolegiju!");
-	}).catch(error => {
-		console.log("Unos podataka o kolegiju neuspješan.")
-	})
-	res.redirect("/podaciKolegij/:id");
-});
-
 //DOHVAĆANJE PODATAKA O KOLEGIJU
 router.get('/podaciKolegij', function(req, res) {
-	PodaciKolegij.find({}).exec(function(err, podaci){
+	Kolegij.find({}).exec(function(err, kolegiji){
 		if (err) throw err;
 		//console.log(req.user.id);
-		res.render('podaciKolegij.ejs', { "podaci" : podaci });
+		res.render('podaciKolegij.ejs', { "kolegiji" : kolegiji });
     });
 });
 
@@ -325,27 +312,6 @@ router.get('/podaciKolegij/:id', function(req, res) {
 		//console.log(req.user.id);
 		res.render('podaciKolegij.ejs', { "podaci" : podaci });
     });
-});
-
-//UNOS PROFESORA
-router.post("/unosProfesora", function(req, res) {
-	const profesor = new PodaciKolegij({
-			/*kolegij: req.kolegij.id,*/
-			imeProfesora: req.body.imeProfesora,
-			prezimeProfesora: req.body.prezimeProfesora,
-			emailProfesora: req.body.emailProfesora,
-			uredProfesora: req.body.uredProfesora
-		});
-		profesor.save().then(data => {
-			console.log("Uspješno unesen novi profesor");
-		}).catch(error => {
-			console.log("Profesor nije spremljen")
-		})
-	res.redirect("/podaciKolegij");
-});
-
-router.get("/unosProfesora", function(req, res){
-	res.sendFile(path.join(__dirname + "/views" + "/unosProfesora.html"));
 });
 
 //UREDI PODATKE O PROFESORU
@@ -374,38 +340,6 @@ router.post('/izmjenaProfesora/:id', function(req, res) {
 		});
 });	
 
-
-//UNOS ASISTENTA
-router.post('/unosAsistenta', function(req, res) {
-	const asistent = new PodaciKolegij({
-			/*kolegij: req.kolegij.id,*/
-			imeAsistenta: req.body.imeAsistenta,
-			prezimeAsistenta: req.body.prezimeAsistenta,
-			emailAsistenta: req.body.emailAsistenta,
-			uredAsistenta: req.body.uredProfesora
-		});
-		asistent.save().then(data => {
-			console.log("Uspješno unesen novi asistent");
-		}).catch(error => {
-			console.log("Asistent nije spremljen")
-		})
-	res.redirect('/podaciKolegij');
-})
-
-router.get('/unosAsistenta', function(req, res){
-	res.sendFile(path.join(__dirname + '/views' + '/unosAsistenta.html'));
-});
-
-
-//DOHVAĆANJE PODATAKA O ASISTENTU
-router.get('/podaciKolegij', function(req, res) {
-	Asistent.find({}).exec(function(err, asistenti){
-		if (err) throw err;
-		//console.log(req.user.id);
-		res.render('podaciKolegij.ejs', { "asistenti" : asistenti });
-	});
-});
-
 //UREDI PODATKE O ASISTENTU
 router.get('/urediAsistenta/:id', function(req, res) {
 	var asistent = new Asistent(req.body);
@@ -419,25 +353,6 @@ router.get('/urediAsistenta/:id', function(req, res) {
 	});
 });
 
-//UNOS BODOVA
-router.post('/unosBodova', function(req, res) {
-	const bodovi = new PodaciKolegij({
-			//kolegij: req.kolegij.id,
-			kolokvijBodovi: req.body.kolokvijBodovi,
-			ostaloBodovi: req.body.ostaloBodovi
-
-		});
-		bodovi.save().then(data => {
-			console.log("Uspješno uneseni bodovi");
-		}).catch(error => {
-			console.log("Bodovi nisu spremljeni")
-		})
-	res.redirect('/podaciKolegij');
-})
-
-router.get('/unosBodova', function(req, res){
-	res.sendFile(path.join(__dirname + '/views' + '/unosBodova.html'));
-});
 
 //UREDI BODOVE
 router.get('/urediBodove/:id', function(req, res) {

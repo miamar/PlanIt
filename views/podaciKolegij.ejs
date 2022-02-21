@@ -51,79 +51,41 @@
         </div>
        </div>
     </div>
-    
+    <% kolegiji.forEach(function (kolegij) { %>
     <div class="row" style="margin-bottom: 1em;">
         <div class="col-sm-4 col-12 d-flex justify-content-center" >
             <div class="card text-white bg-secondary mb-3">
-                <div class="card-header"><h5>Kontakti</h5></div>
+                <div class="card-header"><h5>Kontakt profesor</h5></div>
                 <div class="card-body">
-                    <p class="card-text"><b>Profesor:</b></p>
-                    <% podaci.forEach(function (podatak) { %>
-                    <p class="card-text">Prof. dr. sc. <%= podatak.imeProfesora %> <%= podatak.prezimeProfesora %></p>
-                    <p class="card-text">E-mail: <%= podatak.emailProfesora %></p>
-                    <p class="card-text">Ured: <%= podatak.uredProfesora %></p>
-                    <a href="/unosProfesora"><button class="btn btn-light btn-sm">Unesi</button></a>
-                    <a href="/urediProfesora/<%= podatak._id %>"><button class="btn btn-light btn-sm">Uredi</button></a>
-                    <% }) %>
-                    <p class="card-text"><b>Asistent:</b></p>
-                    <% podaci.forEach(function (podatak) { %>
-                    <p class="card-text">Prof. dr. sc.  <%= podatak.imeAsistenta %> <%= podatak.prezimeAsistenta %></p>
-                    <p class="card-text">E-mail: <%= podatak.emailAsistenta %></p>
-                    <p class="card-text">Ured: <%= podatak.uredAsistenta %></p> 
-                    <a href="/unosAsistenta"><button class="btn btn-light btn-sm">Unesi</button></a>
-                    <a href="/urediAsistenta/<%= podatak._id %>"><button class="btn btn-light btn-sm">Uredi</button></a>
-                    <% }) %>
+                    <p class="card-text">Prof. dr. sc. <%= kolegij.imeProfesora %> <%= kolegij.prezimeProfesora %></p>
+                    <p class="card-text">E-mail: <%= kolegij.emailProfesora %></p>
+                    <p class="card-text">Ured: <%= kolegij.uredProfesora %></p>
                 </div>
               </div>
         </div>
         <div class="col-sm-4 col-12 d-flex justify-content-center" >
-          <div class="card text-white bg-danger mb-3">
-              <div class="card-header"><h5>Ispiti i ostale aktivnosti</h5></div>
-            
+          <div class="card text-white bg-secondary mb-3">
+              <div class="card-header"><h5>Kontakt asistent</h5></div>
               <div class="card-body">
-                  <p class="card-text">nazivAktivnosti datumAktivnosti </p>
-              </div>
-              <div class="card-footer"> 
-                <a href="/unosIspita"><button class="btn btn-light">Unesi</button></a>
-                <a href="/urediIspite"><button class="btn btn-light">Uredi</button></a>
+                  <p class="card-text">Prof. dr. sc.  <%= kolegij.imeAsistenta %> <%= kolegij.prezimeAsistenta %></p>
+                  <p class="card-text">E-mail: <%= kolegij.emailAsistenta %></p>
+                  <p class="card-text">Ured: <%= kolegij.uredAsistenta %></p> 
               </div>
             </div>
-        </div>
+      </div>
         <div class="col-sm-4 col-12 d-flex justify-content-center" >
             <div class="card text-white bg-success mb-3">
                 <div class="card-header"><h5>Broj ostvarenih bodova</h5></div>
-                <% podaci.forEach(function (podatak) { %>
                 <div class="card-body">
-                    <p class="card-text"><b>Kolokvij:</b> <%= podatak.kolokvijBodovi %></p>
-                    <p class="card-text"><b>Ostalo:</b> <%= podatak.ostaloBodovi %></p>
+                    <p class="card-text"><b>Kolokvij:</b> <%= kolegij.kolokvijBodovi %></p>
+                    <p class="card-text"><b>Ostalo:</b> <%= kolegij.ostaloBodovi %></p>
                     <p class="card-text"><b>Ukupno:</b> 60</p>
                 </div>
-                <div class="card-footer"> 
-                  <a href="/unosBodova"><button class="btn btn-light">Unesi</button></a>
-                  <a href="/urediBodove"><button class="btn btn-light">Uredi</button></a>
-                </div>
-                <% }) %>
-              </div>
-        </div>
-        <div class="col-sm-5 col-12 d-flex justify-content-center" >
-            <div class="card bg-light mb-3">
-                <div class="card-header"><h5>Evidencija dolaznosti</h5></div>
-                <div class="card-body">
-                  <p class="card-text"><input type="checkbox" id="check" name="check"><label for="check"> dd.mm.gg. </label><a href="/urediDolaznost"><button class="btn btn-secondary btn-sm">Uredi</button></a></p>
-                  <hr>
-                  <p class="card-text"><input type="checkbox" id="check" name="check"><label for="check"> dd.mm.gg.</label><a href="/urediDolaznost"><button class="btn btn-secondary btn-sm">Uredi</button></a></p>
-                  <hr>
-                  <p class="card-text"><input type="checkbox" id="check" name="check"><label for="check"> dd.mm.gg.</label><a href="/urediDolaznost"><button class="btn btn-secondary btn-sm">Uredi</button></a></p>
-                  <hr>
-                  <p class="card-text"><input type="checkbox" id="check" name="check"><label for="check"> dd.mm.gg.</label><a href="/urediDolaznost"><button class="btn btn-secondary btn-sm">Uredi</button></a></p>
-                </div>
-                <div class="card-footer"> 
-                  <a href="/unosDolaznosti"><button class="btn btn-secondary">Unesi novi datum</button></a>
-                  
                 </div>
               </div>
         </div>
     </div>
+    <% }) %>
     </div>
 
     <div class="footer">
