@@ -133,7 +133,8 @@ app.get("/mojprofil", function (req, res) {
 app.post("/list", function (req, res) {
   i = req.body.n;
   const item = new ToDo({
-	  textToDo: i
+	  textToDo: i,
+	  //user : req.user.id
   });
   item.save();
   res.redirect("/mojprofil");
@@ -241,7 +242,7 @@ const upload = multer({
 // STVARANJE NOVOG KOLEGIJA
 router.post('/unosKolegija', upload.single('image'), function(req, res) {
 	const kolegij = new Kolegij({
-			//user : req.user.id,
+			user : req.user.id,
 			nazivKolegija : req.body.nazivKolegija,
 			dvoranaPredavanje : req.body.dvoranaPredavanje,
 			dvoranaVjezbe : req.body.dvoranaVjezbe,
@@ -272,7 +273,7 @@ router.get('/unosKolegija', function(req, res) {
 
 //DOHVAĆANJE KOLEGIJA
 router.get('/kolegiji', function(req, res) {
-	Kolegij.find({/*user: req.user.id*/}).exec(function(err, kolegiji){
+	Kolegij.find({user: req.user.id}).exec(function(err, kolegiji){
 		if (err) throw err;
 		//console.log(req.user.id);
 		res.render('kolegiji.ejs', { "kolegiji" : kolegiji });
