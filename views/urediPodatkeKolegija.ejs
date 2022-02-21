@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Unos kolegija</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/index.css" rel="stylesheet" type="text/css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    
+    <div class="nav flex-column nav-pills sticky-top" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+      <a class="nav-link" id="v-pills-planit-tab" data-toggle="pill" href="/index" role="tab" aria-controls="v-pills-planit" aria-selected="false"><img src="/images/logo.png" style="width: 70%;"></a>
+      <hr style="width: 80%; align-self: center;">
+      <a class="nav-link" id="v-pills-planner-tab" data-toggle="pill" href="/index" role="tab" aria-controls="v-pills-planner" aria-selected="false">Moj planner</a>
+      <hr style="width: 80%; align-self: center;">
+      <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="/mojprofil" role="tab" aria-controls="v-pills-profile" aria-selected="false">Moj profil</a>
+      <hr style="width: 80%; align-self: center;">
+      <a class="nav-link" id="v-pills-raspored-tab" data-toggle="pill" href="/raspored" role="tab" aria-controls="v-pills-raspored" aria-selected="false">Raspored sati</a>
+      <hr style="width: 80%; align-self: center;">
+      <a class="nav-link active" id="v-pills-kolegiji-tab" data-toggle="pill" href="/kolegiji" role="tab" aria-controls="v-pills-kolegiji" aria-selected="True"  style="background-color: #d9534f; color:white">Kolegiji</a>
+      <hr style="width: 80%; align-self: center;">
+      <a class="nav-link" id="v-pills-obavijesti-tab" data-toggle="pill" href="/obavijesti" role="tab" aria-controls="v-pills-obavijesti" aria-selected="false">Obavijesti</a>
+      <hr style="width: 80%; align-self: center;">
+    </div>
+    
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-6" style="margin-top: 1em;">
+           <p style="color: darkgray;">Unos kolegija</p>
+        </div>
+        <div class="col-6" style="margin-top: 1em;">
+            <div class="dropdown" style="float:right;">
+                <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown">
+                    <img src="/icons/person.svg" style="width: 70%;">
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="/mojprofil">Moj profil</a></li>
+                  <li><a class="dropdown-item" href="/logout">Odjava</a></li>
+                </ul>
+              </div>
+         </div>
+      </div>
+      <div class="row">
+        <div class="col-12" style="margin-top: 1em;">
+          <div class="dropdown">
+            <a href="/kolegiji"><button type="button" class="btn btn-secondary ">
+              Kolegiji
+          </button></a>
+          </div>
+         </div>
+      </div> 
+          <!--  -->
+     
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2 col-12"></div>
+                <div class="col-md-8 col-12 justify-content-center">
+                  <div class="card bg-light mb-3">
+                    <div class="card-header"><h5>Unos podataka za novi kolegij</h5></div>
+                    <div class="card-body">
+                  	<form class="text-right" action="/urediPodatke/<%= kolegij._id %>" method="post" enctype="multipart/form-data">
+                      <div class="form-group">
+                            <label class="from-control">Naziv kolegija</label>
+                            <input type="text" class="form-control" name="nazivKolegija" id="nazivKolegija">
+                        </div>
+                        <div class="form-group">
+                            <label class="from-control">Dvorana za predavanje</label>
+                            <input type="" class="form-control" name="dvoranaPredavanje" id="dvoranaPredavanje">
+                        </div>
+                    	<div class="form-group">
+                      		<label for="dvoranaVjezbe">Dvorana za vježbe</label>
+                      		<input type="text" class="form-control" name="dvoranaVjezbe" id="dvoranaVjezbe">
+                    	</div>
+                    	<div class="form-group">
+                      		<label for="modelNastave">Model nastave</label>
+                      		<input type="text" class="form-control" name="modelNastave" id="modelNastave">
+                    	</div>
+                      <br>
+                      <div class="form-group">
+                        <label for="image">Dodaj sliku: </label>
+                        <input type="file" class="form-control-file" name="image" id="image">
+                      </div>
+                      <br>
+                      <h5>Profesor: </h5>
+                      <div class="form-group">
+												<label class="from-control">Ime</label>
+												<input type="text" class="form-control" id="imeProfesora" name="imeProfesora" >
+											</div>
+											<div class="form-group">
+												<label class="from-control">Prezime</label>
+												<input type="text" class="form-control" id="preziimeProfesora" name="prezimeProfesora">
+											  </div>
+										<div class="form-group">
+										  <label for="exampleInputEmail1">E-mail</label>
+										  <input type="email" class="form-control" id="emailProfesora" name="emailProfesora">
+										</div> 
+                    <div class="form-group">
+                      <label for="form-control">Ured</label>
+                      <input type="text" class="form-control" id="uredProfesora" name="uredProfesora">
+                    </div>
+                    <br>
+                    <h5>Asistent: </h5>
+                    <div class="form-group">
+                      <label class="from-control">Ime</label>
+                      <input type="text" class="form-control" id="imeAsistenta" name="imeAsistenta" >
+                    </div>
+                    <div class="form-group">
+                      <label class="from-control">Prezime</label>
+                      <input type="text" class="form-control" id="preziimeAsistenta" name="prezimeAsistenta">
+                      </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">E-mail</label>
+                    <input type="email" class="form-control" id="emailAsistenta" name="emailAsistenta">
+                  </div> 
+									<div class="form-group">
+									  <label for="form-control">Ured</label>
+									  <input type="text" class="form-control" id="uredAsistenta" name="uredAsistenta">
+									</div>
+                  <br>
+                  <h5>Bodovi: </h5>
+                    <div class="form-group">
+                      <label class="from-control">Kolokvij:</label>
+                      <input type="text" class="form-control" id="kolokvijBodovi" name="kolokvijBodovi">
+                    </div>
+                    <div class="form-group">
+                      <label class="from-control">Ostalo:</label>
+                      <input type="text" class="form-control" id="ostaloBodovi" name="ostaloBodovi">
+                    </div>
+                      <br>
+                      <button class="btn btn-success">Spremi</button>
+                    	<a href="/kolegiji"><button class="btn btn-danger">Odustani</button></a>
+                  	</form>
+                    </div>
+                  </div>
+                  </div>
+                  </div>
+                </div>
+        </div>
+	</div>
+  
+        <div class="footer">
+            <p style="margin-top: 1em;"><a href="/index"><button type="button" class="btn" ><img src="/icons/home-fill.svg" style="width: 1em;"></button></a>
+            <a href="/mojprofil"><button type="button" class="btn"><img src="/icons/person.svg" style="width: 1em;" ></button></a>
+            <a href="/raspored"><button type="button" class="btn"><img src="/icons/calendar.svg" style="width: 1em;" ></button></a>
+            <a href="/kolegiji"><button type="button" class="btn bg-danger"><img src="/icons/book.svg" style="width: 1em;" ></button></a>
+            <a href="/obavijesti"><button type="button" class="btn"><img src="/icons/bell.svg" style="width: 1em;" ></button></a>
+            </p>
+        </div>
+</body>
+</html>

@@ -307,65 +307,52 @@ router.get('/podaciKolegij', function(req, res) {
 
 //DOHVAĆANJE PODATAKA O KOLEGIJU KAD IMA ID OD TOG KOLEGIJA
 router.get('/podaciKolegij/:id', function(req, res) {
-	PodaciKolegij.find({kolegij: req.params.id}).exec(function(err, podaci){
+	Kolegij.findById({_id: req.params.id}).exec(function(err, podaci){
 		if (err) throw err;
 		//console.log(req.user.id);
 		res.render('podaciKolegij.ejs', { "podaci" : podaci });
     });
 });
 
-//UREDI PODATKE O PROFESORU
-router.get("/urediProfesora/:id", function(req, res) {
-	var profesor = new Profesor(req.body);
-
-	Profesor.findOne({_id: req.params.id}).exec(function(err, profesor){
+//UREĐIVANJE PODATAKA O KOLEGIJU
+router.get('/urediPodatkeKolegija/:id', function(req, res) {
+	var kolegij= new Kolegij(req.body);
+	
+	Kolegij.findOne({_id: req.params.id}).exec(function(err, kolegi){
 		if(err){
-			console.log("Greška u uređivanju podataka o profesori");
+			console.log("Error with editing data");
 		} else {
-			res.render("podaciKolegij.ejs", {profesor: profesor});
+			res.render('urediPodatkeKolegija.ejs', {kolegij: kolegij});
 		}
 	});
-
 });
-
-router.post('/izmjenaProfesora/:id', function(req, res) {
-	console.log("update is in process...");
-	Profesor.findByIdAndUpdate(req.params.id, {
-		$set :{ imeProfesora: req.body.imeProfesora, prezimeProfesora: req.body.prezimeProfesora, emailProfesora: req.body.emailProfesora, uredProfesora: req.body.uredProfesora } }, {new: true}, function (err, profesor){
+router.post('/urediPodatke/:id', function(req, res) {
+	console.log("updating in process...");
+	Note.findByIdAndUpdate(req.params.id, {
+		$set :{ dvoranaPredavanje : req.body.dvoranaPredavanje, 
+			dvoranaVjezbe : req.body.dvoranaVjezbe,
+			modelNastave : req.body.modelNastave,
+			img: req.file.filename,
+			imeProfesora: req.body.imeProfesora,
+		    prezimeProfesora: req.body.prezimeProfesora,
+		    emailProfesora: req.body.emailProfesora,
+		    uredProfesora: req.body.uredProfesora,
+		    imeAsistenta: req.body.imeAsistenta,
+		    prezimeAsistenta: req.body.prezimeAsistenta,
+		    emailAsistenta: req.body.emailAsistenta,
+		    uredAsistenta: req.body.uredProfesora,
+		    kolokvijBodovi: req.body.kolokvijBodovi,
+		    ostaloBodovi: req.body.ostaloBodovi } }, 
+			{new: true}, 
+		    function (err, kolegij){
 			if (err){
 				console.log(err);
-				res.render('/urediProfesora', {profesor:req.body});
+				res.render('/urediPodatkeKolegija', {kolegij:req.body});
 			}
 			res.redirect("/podaciKolegij");
 		});
-});	
-
-//UREDI PODATKE O ASISTENTU
-router.get('/urediAsistenta/:id', function(req, res) {
-	var asistent = new Asistent(req.body);
-
-	Asistent.findOne({_id: req.params.id}).exec(function(err, asistent){
-		if(err){
-			console.log("Greška u uređivanju podataka o asistentu");
-		} else {
-			res.render('urediAsistenta.ejs', {asistent: asistent});
-		}
-	});
 });
 
-
-//UREDI BODOVE
-router.get('/urediBodove/:id', function(req, res) {
-	var bodovi = new Bodovi(req.body);
-
-	Bodovi.findOne({_id: req.params.id}).exec(function(err, bodovi){
-		if(err){
-			console.log("Greška u uređivanju bodova");
-		} else {
-			res.render('urediBodove.ejs', {bodovi: bodovi});
-		}
-	});
-});
 
 //UNOS DOLAZNOSTI
 router.post('/unosDolaznosti', function(req, res) {
