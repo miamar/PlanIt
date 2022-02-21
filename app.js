@@ -232,13 +232,13 @@ router.get('/mojProfil', function(req, res) {
 
 //UREĐIVANJE PODATAKA O KORISNIKU
 router.get('/urediProfil/:id', function(req, res) {
-	var user = new User(req.body);
+	var korisnik = new User(req.body);
 	
-	User.findOne({_id: req.params.id}).exec(function(err, user){
+	User.findOne({_id: req.params.id}).exec(function(err, korisnik){
 		if(err){
 			console.log("Error with editing user");
 		} else {
-			res.render('urediProfil.ejs', {user: user});
+			res.render('urediProfil.ejs', {korisnik: korisnik});
 		}
 	});
 });
@@ -250,7 +250,7 @@ router.post('/urediPodatkeKorisnika/:id', function(req, res) {
 			surname : request.body.surname,
 		   userName : request.body.userName,
 		   password : request.body.password,
-		   email : request.body.email } }, {new: true}, function (err, user){
+		   email : request.body.email } }, {new: true}, function (err, korisnik){
 			if (err){
 				console.log(err);
 				res.render('/urediProfil', {user:req.body});
@@ -304,7 +304,7 @@ router.get('/kolegiji', function(req, res) {
 router.get('/brisanjeKolegija', function(req, res) {
 	Kolegij.find({user: req.user.id}).exec(function(err, kolegiji){
 		if (err) throw err;
-		console.log(req.user.id);
+		//console.log(req.user.id);
 		res.render('brisanjeKolegija.ejs', { "kolegiji" : kolegiji });
 	});
 });
