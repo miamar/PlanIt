@@ -428,9 +428,9 @@ router.get('/unosIspita', function(req, res){
 
 //DOHVAĆANJE PODATAKA O AKTIVNOSTI
 router.get('/podaciKolegij', function(req, res) {
-	Aktivnost.find({}).exec(function(err, aktivnosti){
+	Aktivnost.find({user: req.user.id}).exec(function(err, aktivnosti){
 		if (err) throw err;
-		//console.log(req.user.id);
+		console.log(req.user.id);
 		res.render('podaciKolegij.ejs', { "aktivnosti" : aktivnosti });
 	});
 });
