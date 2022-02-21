@@ -50,12 +50,12 @@
         <div class="card">
           <div class="card-body">
             <h4 class="text-left">Moji podaci</h4>
-            <% podaci.forEach(function (korinsik) { %>
-            <p><strong>Ime: </strong> <%= korinsik.name %></p>
-            <p><strong>Prezime: </strong>  <%= korinsik.surname %></p>
-            <p><strong>Korisničko ime: </strong>  <%= korinsik.username %></p>
-            <p><strong>Email: </strong>  <%= korinsik.email %></p>
-            <a class="btn btn-primary" href="/urediProfil/<%= korinsik._id %>" role="button" style="color: white;">Uredi profil</a>
+            <% podaci.forEach(function (korisnik) { %>
+            <p><strong>Ime: </strong> <%= korisnik.name %></p>
+            <p><strong>Prezime: </strong>  <%= korisnik.surname %></p>
+            <p><strong>Korisničko ime: </strong>  <%= korisnik.username %></p>
+            <p><strong>Email: </strong>  <%= korisnik.email %></p>
+            <a class="btn btn-primary" href="/urediProfil/<%= korisnik._id %>" role="button" style="color: white;">Uredi profil</a>
             <% }) %>
           </div>
         </div>

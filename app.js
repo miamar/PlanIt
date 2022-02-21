@@ -248,7 +248,34 @@ router.get('/podaciKorisnik', function(req, res) {
 	});
 });
 
+//UREĐIVANJE PODATAKA O KORISNIKU
+router.get('/urediProfil/:id', function(req, res) {
+	var user = new User(req.body);
+	
+	User.findOne({_id: req.params.id}).exec(function(err, user){
+		if(err){
+			console.log("Error with editing user");
+		} else {
+			res.render('urediProfil.ejs', {user: user});
+		}
+	});
+});
 
+router.post('/urediPodatkeKorisnika/:id', function(req, res) {
+	console.log("update user is in process...");
+	User.findByIdAndUpdate(req.params.id, {
+		$set :{ name : request.body.name,
+			surname : request.body.surname,
+		   userName : request.body.userName,
+		   password : request.body.password,
+		   email : request.body.email } }, {new: true}, function (err, user){
+			if (err){
+				console.log(err);
+				res.render('/urediProfil', {user:req.body});
+			}
+			res.redirect("/podaciKorisnik");
+		});
+});
 
 // STVARANJE NOVOG KOLEGIJA
 router.post('/unosKolegija', upload.single('image'), function(req, res) {
