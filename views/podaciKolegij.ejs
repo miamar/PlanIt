@@ -24,11 +24,11 @@
         <a class="nav-link" id="v-pills-obavijesti-tab" data-toggle="pill" href="/obavijesti" role="tab" aria-controls="v-pills-obavijesti" aria-selected="false">Obavijesti</a>
         <hr style="width: 80%; align-self: center;">
     </div>
-    <% Array.from(kolegiji).forEach(function (kolegij) { %>
+    
     <div class="container-fluid">
       <div class="row">
         <div class="col-6" style="margin-top: 1em;">
-           <p style="color: darkgray;"><%= kolegij.imeProfesora %></p>
+           <p style="color: darkgray;">Podaci o kolegiju</p>
         </div>
         <div class="col-6" style="margin-top: 1em;">
             <div class="dropdown" style="float:right;">
@@ -51,6 +51,7 @@
         </div>
        </div>
     </div>
+    <% Array.from(kolegiji).forEach(function (kolegij) { %>
     <div class="row" style="margin-bottom: 1em;">
         <div class="col-sm-4 col-12 d-flex justify-content-center" >
             <div class="card text-white bg-secondary mb-3">
@@ -82,15 +83,17 @@
                 </div>
                 </div>
           </div>
-          <div class="col-sm-2 col-12" ></div>
-          <div class="col-sm-8 col-12 d-flex justify-content-center">
+          <div class="col-12 d-flex justify-content-center">
             <a href="/urediPodatkeKolegija/<%= kolegij._id %>"><button class="btn btn-light">Uredi podatke o kolegiju</button></a>
+            <a href="/unosIspita"><button class="btn btn-light">Unesi novi ispit ili aktivnost</button></a>
             <a href="/aktivnosti"><button class="btn btn-light">Pregled ispita i aktivnosti za kolegij</button></a>
+            <a href="/unosDolaznosti"><button class="btn btn-light">Unesi novi datum predavanja/vježbi</button></a>
             <a href="/dolaznost"><button class="btn btn-light">Pregled dolaznosti za kolegij</button></a>
           </div>
         </div>
+        <% }) %>
     </div>
-    <% }) %>
+    
 
     <div class="footer">
       <p style="margin-top: 1em;"><a href="/index"><button type="button" class="btn" ><img src="/icons/home-fill.svg" style="width: 1em;"></button></a>
