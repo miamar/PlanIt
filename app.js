@@ -302,9 +302,9 @@ router.get('/kolegiji', function(req, res) {
 
 //BRISANJE KOLEGIJA
 router.get('/brisanjeKolegija', function(req, res) {
-	Kolegij.find({/*user: req.user.id*/}).exec(function(err, kolegiji){
+	Kolegij.find({user: req.user.id}).exec(function(err, kolegiji){
 		if (err) throw err;
-		//console.log(req.user.id);
+		console.log(req.user.id);
 		res.render('brisanjeKolegija.ejs', { "kolegiji" : kolegiji });
 	});
 });
