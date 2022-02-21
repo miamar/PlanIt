@@ -307,18 +307,20 @@ router.get('/podaciKolegij', function(req, res) {
 
 //DOHVAĆANJE PODATAKA O KOLEGIJU KAD IMA ID OD TOG KOLEGIJA
 router.get('/podaciKolegij/:id', function(req, res) {
-	Kolegij.findById({_id: req.params.id}).exec(function(err, podaci){
-		if (err) throw err;
-		//console.log(req.user.id);
-		res.render('podaciKolegij.ejs', { "podaci" : podaci });
-    });
+	Kolegij.findOne({_id: req.params.id}).exec(function(err, kolegiji){
+		if(err){
+			console.log("Error with ffinding data");
+		} else {
+			res.render('podaciKolegij.ejs', {"kolegiji": kolegiji });
+		}
+	});
 });
 
 //UREĐIVANJE PODATAKA O KOLEGIJU
 router.get('/urediPodatkeKolegija/:id', function(req, res) {
 	var kolegij= new Kolegij(req.body);
 	
-	Kolegij.findOne({_id: req.params.id}).exec(function(err, kolegi){
+	Kolegij.findOne({_id: req.params.id}).exec(function(err, kolegij){
 		if(err){
 			console.log("Error with editing data");
 		} else {
