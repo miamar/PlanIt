@@ -239,6 +239,17 @@ const upload = multer({
 	storage:storage
 })
 
+//DOHVAĆANJE PODATAKA O KORISNIKU
+router.get('/podaciKorisnik', function(req, res) {
+	User.find({_id: req.user.id}).exec(function(err, podaci){
+		if (err) throw err;
+		console.log(req.user.id);
+		res.render('podaciKorisnik.ejs', { "podaci" : podaci });
+	});
+});
+
+
+
 // STVARANJE NOVOG KOLEGIJA
 router.post('/unosKolegija', upload.single('image'), function(req, res) {
 	const kolegij = new Kolegij({
