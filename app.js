@@ -124,7 +124,7 @@ passport.deserializeUser(function(id, done) {
 
 //TODO LISTA mojprofil.ejs
 app.get("/mojprofil", function (req, res) {
-	ToDo.find({}).exec(function(err, newListItem){
+	ToDo.find({/*user: req.user.id*/}).exec(function(err, newListItem){
 		   if(err) throw(err);
 		  res.render("mojprofil", { newListItem});
 	});
@@ -152,7 +152,7 @@ app.post("/deleteItem", function(req,res){
 
 //TODO LISTA index.ejs
 app.get("/index", function (req, res) {
-	ToDo.find({}).exec(function(err, newListItem){
+	ToDo.find({/*user: req.user.id*/}).exec(function(err, newListItem){
 		   if(err) throw(err);
 		  res.render("index", { newListItem});
 	});
@@ -275,7 +275,7 @@ router.get('/unosKolegija', function(req, res) {
 router.get('/kolegiji', function(req, res) {
 	Kolegij.find({user: req.user.id}).exec(function(err, kolegiji){
 		if (err) throw err;
-		//console.log(req.user.id);
+		console.log(req.user.id);
 		res.render('kolegiji.ejs', { "kolegiji" : kolegiji });
 	});
 });
