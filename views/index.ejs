@@ -71,29 +71,32 @@
                     </div>
                   </div>
             </div>
-            <div class="col-sm-6 col-12 d-flex justify-content-center">
+            <div class="col-sm-6 col-12 d-flex justify-content-center" >
               <div class="card bg-light mb-3">
                   <div class="card-header"><h6>ToDo lista</h6></div>
                   <div class="card-body">
                     <% for(var i=0;i<newListItem.length;i++) { %>
-                      <form action="/deleteItemIndex" method="post">
+                      <form action="/deleteItem" method="post">
                           <p class="card-text">
                             <input type="checkbox" name="checkbox" value="<%= newListItem[i]._id%>" onchange="this.form.submit()" id="checkbox">
                             <label for="checkbox"> 
                           </label>
-                          <%= newListItem[i].textToDo %> 
+                          <%= newListItem[i].textToDo%> 
                           </p>        
                           <hr>
                         </form> 
                       <% } %>
                     </div>
+                    <div class="card-footer">
+                    <form action="/list" method="post">
+                      <input type="text" name="n"  class="form-control" placeholder="Upiši novu bilješku"></p>
+                      <button id="b" type="submit" class="btn"><img src="/icons/plus.svg" style="width: 1em;" ></button>Dodaj novu bilješku</p>
+                  </form>
                   </div>
                 </div>
+          </div>
           
             <div class="col-sm-6 col-12 d-flex justify-content-center">
-                <!--  
-
-                -->
                   <div class="list-group">
                     <div class="list-group-item list-group-item-action flex-column align-items-start active">
                       <div class="d-flex w-100 justify-content-between">
@@ -121,6 +124,139 @@
                   </div>
 
             </div>
+            <div class="col-sm-6 col-12 d-flex justify-content-center" style="margin-bottom: 5em;">
+              <div class="list-group">
+                <div class="list-group-item list-group-item-action flex-column align-items-start bg-warning">
+                  <div class="d-flex w-100 justify-content-between izvr-akt">
+                    <h5 class="mb-1" style="color:white;">Pregled nadolazećih aktivnosti po mjesecu</h5>
+                  </div>
+                </div>
+      <div class="list-group-item list-group-item-action flex-column align-items-start">
+        <div class="d-flex w-100 justify-content-between">
+          <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+            <option selected>Odaberi mjesec</option>
+            <option value="sijecanj">Siječanj</option>
+            <option value="veljaca">Veljača</option>
+            <option value="ozujak">Ožujak</option>
+            <option value="travanj">Travanj</option>
+            <option value="svibanj">Svibanj</option>
+            <option value="lipanj">Lipanj</option>
+            <option value="srpanj">Srpanj</option>
+            <option value="kolovoz">Kolokvoz</option>
+            <option value="rujan">Rujan</option>
+            <option value="studeni">Studeni</option>
+            <option value="prosinac">Prosinac</option>
+          </select>
+      </div>
+      </div>    
+      <div class="list-group-item list-group-item-action flex-column align-items-start">
+                  <div class="d-flex w-100 justify-content-between">
+                    <p class="mb-1">Ekonomika poslovanja</p>
+                    <small class="text-muted">Za 3 dana</small>
+                  </div>
+                </div>
+                <div class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                      <p class="mb-1">Operacijska istraživanja</p>
+                      <small class="text-muted">Za 6 dana</small>
+                    </div>
+                </div>
+                <div class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                      <p class="mb-1">Inteligentni sustavi</p>
+                      <small class="text-muted">Za 10 dana</small>
+                    </div>
+                </div>
+                <div class="card-footer">
+                  <p class="card-text" data-bs-toggle="modal" data-bs-target="#myModal" style="color: black;"><button id="b" type="submit" class="btn"><img src="/icons/plus.svg" style="width: 1em;" ></button>Dodaj novu aktivnost</p>
+              </div>
+              </div>
+              <div class="modal" id="myModal">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                  
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                      <h4 class="modal-title">Unos nove aktivnosti</h4>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    
+                    <form action="/unosIspita" method="post">
+                      <div class="modal-body">
+                      <div class="form-group">
+                      <select class="form-select form-select-sm" aria-label=".form-select-sm example" id="tipAktivnosti" name="tipKativnosti">
+                          <option selected>Odaberi kategoriju</option>
+                          <option value="1">Kolokvij</option>
+                          <option value="2">Završni ispit</option>
+                          <option value="3">Zadaća</option>
+                          <option value="4">Ostalo</option>
+                      </select>
+                      </div> 
+                      <div class="form-group">
+                          <label class="from-control">Naziv aktivnosti:</label>
+                          <input type="text" class="form-control" id="nazivAktivnosti" name="nazivAktivnosti">
+                      </div><br>
+                      <div class="form-group">
+                        <label for="datum">Datum:</label>
+                        <input type="date" id="datum" name="datum">
+                      </div><br>
+                    </div>
+                    <div class="modal-footer">
+                    <button class="btn btn-primary">Spremi</button>
+                      <a href="/mojProfil" role="button"><button class="btn btn-danger">Odustani</button></a>
+                    </div>
+                  </form>
+              
+                  </div>
+                </div>
+              </div>
+        </div>
+        <div class="col-sm-6 col-12 d-flex justify-content-center" style="margin-bottom: 5em;">
+          <div class="list-group">
+            <div class="list-group-item list-group-item-action flex-column align-items-start bg-success">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1" style="color:white;">Pregled prošlih aktivnosti po mjesecu</h5>
+              </div>
+            </div>
+  <div class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex w-100 justify-content-between">
+      <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+        <option selected>Odaberi mjesec</option>
+        <option value="sijecanj">Siječanj</option>
+        <option value="veljaca">Veljača</option>
+        <option value="ozujak">Ožujak</option>
+        <option value="travanj">Travanj</option>
+        <option value="svibanj">Svibanj</option>
+        <option value="lipanj">Lipanj</option>
+        <option value="srpanj">Srpanj</option>
+        <option value="kolovoz">Kolokvoz</option>
+        <option value="rujan">Rujan</option>
+        <option value="studeni">Studeni</option>
+        <option value="prosinac">Prosinac</option>
+      </select>
+  </div>
+  </div>
+            <div class="list-group-item list-group-item-action flex-column align-items-start">
+              <div class="d-flex w-100 justify-content-between">
+                <p class="mb-1">Ekonomika poslovanja</p>
+                <small class="text-muted">Prije 3 dana</small>
+              </div>
+            </div>
+            <div class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                  <p class="mb-1">Operacijska istraživanja</p>
+                  <small class="text-muted">Prije 6 dana</small>
+                </div>
+            </div>
+            <div class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                  <p class="mb-1">Inteligentni sustavi</p>
+                  <small class="text-muted">Prije 10 dana</small>
+                </div>
+            </div>
+          </div>
+
+    </div>
           </div>
             <!--
             <div class="col-12 d-flex justify-content-center">

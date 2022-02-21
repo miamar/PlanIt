@@ -123,10 +123,10 @@ passport.deserializeUser(function(id, done) {
 });
 
 //TODO LISTA mojprofil.ejs
-app.get("/mojprofil", function (req, res) {
+app.get("/index", function (req, res) {
 	ToDo.find({/*user: req.user.id*/}).exec(function(err, newListItem){
 		   if(err) throw(err);
-		  res.render("mojprofil", { newListItem});
+		  res.render("index", { newListItem});
 	});
 });
 
@@ -137,7 +137,7 @@ app.post("/list", function (req, res) {
 	  //user : req.user.id
   });
   item.save();
-  res.redirect("/mojprofil");
+  res.redirect("/index");
 });
 
 //Kada se klikne na checkbox bilješka automatski se briše iz baze
@@ -145,28 +145,10 @@ app.post("/deleteItem", function(req,res){
 	ToDo.findByIdAndRemove(req.body.checkbox, function (err){
 		if(!err){
 			console.log("Bilješka je izbrisana!");
-			res.redirect("/mojprofil");
-		}
-	})
-});
-
-//TODO LISTA index.ejs
-app.get("/index", function (req, res) {
-	ToDo.find({/*user: req.user.id*/}).exec(function(err, newListItem){
-		   if(err) throw(err);
-		  res.render("index", { newListItem});
-	});
-});
-
-app.post("/deleteItemIndex", function(req,res){
-	ToDo.findByIdAndRemove(req.body.checkbox, function (err){
-		if(!err){
-			console.log("Bilješka je izbrisana!");
 			res.redirect("/index");
 		}
 	})
 });
-
 
 router.get('/', function(req, res){
 	res.sendFile(path.join(__dirname + '/views' + '/prijava.html'));
@@ -240,11 +222,11 @@ const upload = multer({
 })
 
 //DOHVAĆANJE PODATAKA O KORISNIKU
-router.get('/podaciKorisnik', function(req, res) {
+router.get('/mojProfil', function(req, res) {
 	User.find({_id: req.user.id}).exec(function(err, podaci){
 		if (err) throw err;
 		console.log(req.user.id);
-		res.render('podaciKorisnik.ejs', { "podaci" : podaci });
+		res.render('mojProfil.ejs', { "podaci" : podaci });
 	});
 });
 
@@ -273,7 +255,7 @@ router.post('/urediPodatkeKorisnika/:id', function(req, res) {
 				console.log(err);
 				res.render('/urediProfil', {user:req.body});
 			}
-			res.redirect("/podaciKorisnik");
+			res.redirect("/mojProfil.ejs");
 		});
 });
 
