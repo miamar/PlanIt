@@ -328,7 +328,7 @@ router.get('/podaciKolegij', function(req, res) {
 
 //DOHVAĆANJE PODATAKA O KOLEGIJU KAD IMA ID OD TOG KOLEGIJA
 router.get('/podaciKolegij/:id', function(req, res) {
-	Kolegij.findOne({_id: req.params.id}).exec(function(err, kolegiji){
+	Kolegij.find({_id: req.params.id}).exec(function(err, kolegiji){
 		if(err){
 			console.log("Error with ffinding data");
 		} else {
