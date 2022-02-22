@@ -4,7 +4,7 @@ const dolaznostSchema = mongoose.Schema({
 		type: String
 	},
 	datum: {
-        type: Date
+        type: String
     }
 })
 

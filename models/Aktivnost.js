@@ -11,7 +11,7 @@ const aktivnostSchema = mongoose.Schema({
 		type: String
 	},
 	datumAktivnosti: {
-		type: Date
+		type: String
 	}
 })
 
