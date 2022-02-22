@@ -58,7 +58,7 @@
             <div class="card bg-light mb-3">
                 <div class="card-header"><h5>Evidencija dolaznosti</h5></div>
                 <div class="card-body">
-                  <form action="/unosDolaznosti" method="post"> 
+                  <form action="/unosDolaznosti/<%= kolegij._id %>" method="post"> 
                     <div class="form-group">
                         <label class="datum">Datum predavanja/vježbi: </label>
                         <input type="date" id="datum" name="datum">

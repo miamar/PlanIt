@@ -341,6 +341,7 @@ router.get('/urediPodatkeKolegija/:id', function(req, res) {
 		}
 	});
 });
+
 router.post('/urediPodatke/:id', function(req, res) {
 	console.log("updating in process...");
 	Kolegij.findByIdAndUpdate(req.params.id, {
@@ -370,10 +371,14 @@ router.post('/urediPodatke/:id', function(req, res) {
 
 //DOHVAĆANJE DOLAZNOSTI
 router.get('/dolaznost/:id', function(req, res) {
-	Kolegij.find({kolegij: req.params.id}).exec(function(err, dolaznosti){
+	Dolaznost.find({kolegij: req.params.id}).exec(function(err, dolaznosti){
 		if (err) throw err;
-		res.render('dolaznost.ejs', { "dolaznosti" : dolaznosti});
-    });
+		res.render('dolaznost.ejs');
+	});
+});
+
+router.get('/unosDolaznosti/:id', function(req, res){
+	res.sendFile(path.join(__dirname + '/views' + '/unosDolaznosti.ejs'));
 });
 
 //UNOS DOLAZNOSTI
@@ -390,16 +395,17 @@ router.post('/unosDolaznosti/:id', function(req, res) {
 	res.redirect('/podaciKolegij');
 })
 
-router.get('/unosDolaznosti/:id', function(req, res){
-	res.sendFile(path.join(__dirname + '/views' + '/unosDolaznosti.html'));
-});
-
 //DOHVAĆANJE AKTIVNOSTI I ISPITA
 router.get('/aktivnosti/:id', function(req, res) {
-	Kolegij.find({kolegij: req.params.id}).exec(function(err, aktivnosti){
+	Aktivnost.find({kolegij: req.params.id}).exec(function(err, aktivnosti){
 		if (err) throw err;
 		res.render('aktivnosti.ejs', { "aktivnosti" : aktivnosti});
     });
+});
+
+router.get('/unosIspita/:id', function(req, res){
+	res.sendFile(path.join(__dirname + '/views' + '/unosIspita.html'));
+	
 });
 
 //UNOS AKTIVNOSTI/ISPITA
@@ -415,13 +421,8 @@ router.post('/unosIspita/:id', function(req, res) {
 		}).catch(error => {
 			console.log("Aktivnost nije spremljena")
 		})
-	res.redirect('/podaciKolegij');
+	res.redirect('/aktivnost');
 })
-
-router.get('/unosIspita', function(req, res){
-	res.sendFile(path.join(__dirname + '/views' + '/unosIspita.html'));
-});
-
 
 //SESSIONS
 router.use(function(req, res, next) {
