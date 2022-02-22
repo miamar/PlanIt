@@ -61,28 +61,29 @@
 			</div>
 			<div class="form-group">
 				<label class="from-control">Ime</label>
-				<input type="ime" class="form-control" id="ime">
+				<input type="ime" class="form-control" id="name" value="<%= korisnik.name %>">
 			</div>
       <div class="form-group">
 				<label class="from-control">Prezme</label>
-				<input type="prezime" class="form-control" id="prezime">
+				<input type="prezime" class="form-control" id="surname" value="<%= korisnik.surname %>">
 			</div>
 			<div class="form-group">
 				<label class="from-control">Korisničko ime</label>
-				<input type="username" class="form-control" id="username">
+				<input type="username" class="form-control" id="userName" value="<%= korisnik.userName %>">
 			  </div>
 		<div class="form-group">
 		  <label for="exampleInputEmail1">Email adresa</label>
-		  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+		  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="<%= korisnik.email %>">
 		</div>
 		<div class="form-group">
 		  <label for="exampleInputPassword1">Lozinka</label>
-		  <input type="password" class="form-control" id="exampleInputPassword1">
+		  <input type="password" class="form-control" id="password">
 		</div>
 		<br>
 		<button type="submit" class="btn btn-primary">Spremi</button>
+		</form>
     <a href="/mojprofil"><button class="btn btn-danger">Odustani</button</a>
-	  </form>
+
   </div>
 		</div>
 		
