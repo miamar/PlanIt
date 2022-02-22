@@ -58,7 +58,7 @@
                 <div class="card-header"><h5>Evidencija dolaznosti</h5></div>
                 <div class="card-body">
                   <% dolaznosti.forEach(function (dolaznost) { %>
-                  <p class="card-text"><input type="checkbox" id="check" name="check"><label for="check"> <%= dolaznost.datum %> </label><a href="/obrisiDolaznost"><button class="btn btn-light btn-sm">Obriši</button></a></p>
+                  <p class="card-text"><input type="checkbox" id="check" name="check"><label for="check"> <%= dolaznost.datum %> </label><a href="/obrisiDolaznost/<%= dolaznost._id %>"><button class="btn btn-light btn-sm">Obriši</button></a></p>
                   <hr>
                   <% }) %>
                 <!--

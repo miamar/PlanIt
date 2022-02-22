@@ -370,19 +370,19 @@ router.post('/urediPodatke/:id', function(req, res) {
 });
 
 //DOHVAĆANJE DOLAZNOSTI
-router.get('/dolaznost/:id', function(req, res) {
-	Dolaznost.find({kolegij: req.params.id}).exec(function(err, dolaznosti){
+router.get('/dolaznost', function(req, res) {
+	Dolaznost.find({}).exec(function(err, dolaznosti){
 		if (err) throw err;
-		res.render('dolaznost.ejs');
+		res.render('dolaznost.ejs', { "dolaznosti" : dolaznosti});
 	});
 });
 
-router.get('/unosDolaznosti/:id', function(req, res){
-	res.sendFile(path.join(__dirname + '/views' + '/unosDolaznosti.ejs'));
+router.get('/unosDolaznosti', function(req, res){
+	res.sendFile(path.join(__dirname + '/views' + '/unosDolaznosti.html'));
 });
 
 //UNOS DOLAZNOSTI
-router.post('/unosDolaznosti/:id', function(req, res) {
+router.post('/unosDolaznosti', function(req, res) {
 	const dolaznost = new Dolaznost({
 			kolegij: req.params.id,
 			datum: req.body.datum
@@ -392,26 +392,35 @@ router.post('/unosDolaznosti/:id', function(req, res) {
 		}).catch(error => {
 			console.log("Datum nije spremljen")
 		})
-	res.redirect('/podaciKolegij');
+	res.redirect('/dolaznost');
+})
+
+//BRISANJE DOLAZNOSTI
+router.get("/obrisiDolaznost/:id", (req,res,next)=>{
+	var dolaznost = new Dolaznost(req.body);
+    Dolaznost.findByIdAndRemove(req.params.id ,{useFindAndModify : false}, (err, dolaznost)=> {
+       if(err) console.log(err)
+       console.log("IZBRISANA AKTIVNOST: ", dolaznost);
+    })
+  res.redirect('/dolaznost');
 })
 
 //DOHVAĆANJE AKTIVNOSTI I ISPITA
-router.get('/aktivnosti/:id', function(req, res) {
-	Aktivnost.find({kolegij: req.params.id}).exec(function(err, aktivnosti){
+router.get('/aktivnosti', function(req, res) {
+	Aktivnost.find({}).exec(function(err, aktivnosti){
 		if (err) throw err;
 		res.render('aktivnosti.ejs', { "aktivnosti" : aktivnosti});
     });
 });
 
-router.get('/unosIspita/:id', function(req, res){
+router.get('/unosIspita', function(req, res){
 	res.sendFile(path.join(__dirname + '/views' + '/unosIspita.html'));
 	
 });
 
 //UNOS AKTIVNOSTI/ISPITA
-router.post('/unosIspita/:id', function(req, res) {
+router.post('/unosIspita', function(req, res) {
 	const aktivnost = new Aktivnost({
-			kolegij: req.params.id,
 			tipAktivnosti: req.body.tipAktivnosti,
 			nazivAktivnosti: req.body.nazivAktivnosti,
 			datumAktivnosti: req.body.datum
@@ -421,7 +430,17 @@ router.post('/unosIspita/:id', function(req, res) {
 		}).catch(error => {
 			console.log("Aktivnost nije spremljena")
 		})
-	res.redirect('/aktivnost');
+	res.redirect('/aktivnosti');
+})
+
+//BRISANJE AKTIVNOSTI/ISPITA
+router.get("/obrisiAktivnost/:id", (req,res,next)=>{
+	var aktivnost = new Aktivnost(req.body);
+    Aktivnost.findByIdAndRemove(req.params.id ,{useFindAndModify : false}, (err, aktivnost)=> {
+       if(err) console.log(err)
+       console.log("IZBRISANA AKTIVNOST: ", aktivnost);
+    })
+  res.redirect('/aktivnosti');
 })
 
 //SESSIONS

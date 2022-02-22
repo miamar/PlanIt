@@ -61,7 +61,7 @@
                   <p class="card-text">Kategorija: <%= aktivnost.tipAktivnosti %> </p>
                   <p class="card-text">Naziv: <%= aktivnost.nazivAktivnosti %> </p>
                   <p class="card-text">Datum: <%= aktivnost.datumAktivnosti %> </p>
-                  <p><a href="/obrisiAktivnost"><button class="btn btn-light btn-sm">Obriši</button></a></p>
+                  <p><a href="/obrisiAktivnost/<%= aktivnost._id %>"><button class="btn btn-light btn-sm">Obriši</button></a></p>
                 <% }) %>
               </div>
              <!-- <div class="card-footer"> 
