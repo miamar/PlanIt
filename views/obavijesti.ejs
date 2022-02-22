@@ -57,40 +57,15 @@
             </div>
         </div>
         <br><br><br><br>
+        <% aktivnosti.forEach(function (aktivnost) { %>
         <div class="row">
-            <div class="col-sm-2 col-12 d-flex justify-content-center">
-                <button type="button" class="btn btn-primary">Obavijest <span class="badge badge-light">1</span> 
-                  </button>  &nbsp;&nbsp; <img src="/icons/x.svg" style="width: 20px; margin-top: 2em;"> 
-            </div>
-        </div>
-        <br>
-        <div class="row">
-                <div class="col-sm-2 col-12 d-flex justify-content-center">
-                    <button type="button" class="btn btn-danger">Obavijest <span class="badge badge-light">2</span>
-                      </button>  &nbsp;&nbsp; <img src="/icons/x.svg" style="width: 20px; margin-top: 2em;"> 
+                <div class="col-sm-6 col-12 d-flex justify-content-center">
+                    <button type="button" class="btn btn-danger" style="width: 100%;"><%= aktivnost.nazivAktivnosti %></button>  
+                    &nbsp;&nbsp; <a href="/obrisiObavijest/<%= aktivnost._id %>"><img src="/icons/x.svg" style="width: 20px; margin-top: 2em;"></a>
                 </div>
         </div>
         <br>
-        <div class="row">
-            <div class="col-sm-2 col-12 d-flex justify-content-center">
-                <button type="button" class="btn btn-success">Obavijest <span class="badge badge-light">3</span>
-                  </button>  &nbsp;&nbsp; <img src="/icons/x.svg" style="width: 20px; margin-top: 2em;"> 
-            </div>
-        </div> 
-        <br>
-        <div class="row">
-            <div class="col-sm-2 col-12 d-flex justify-content-center">
-                <button type="button" class="btn btn-warning">Obavijest <span class="badge badge-light">4</span>
-                  </button>  &nbsp;&nbsp; <img src="/icons/x.svg" style="width: 20px; margin-top: 2em;"> 
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-sm-2 col-12 d-flex justify-content-center">
-                <button type="button" class="btn btn-danger">Obavijest <span class="badge badge-light">5</span>
-                  </button>  &nbsp;&nbsp; <img src="/icons/x.svg" style="width: 20px; margin-top: 2em;"> 
-            </div>
-        </div>
+        <% }) %>
     
         </div>
     </div>

@@ -162,16 +162,8 @@ router.get('/raspored', function(req, res){
 	res.sendFile(path.join(__dirname + '/views' + '/raspored.html'));
 });
 
-router.get('/obavijesti', function(req, res){
-	res.sendFile(path.join(__dirname + '/views' + '/obavijesti.html'));
-});
-
 router.get('/urediprofil', function(req, res){
 	res.sendFile(path.join(__dirname + '/views' + '/urediprofil.html'));
-});
-
-router.get('/unosPodatakaKolegiji', function(req, res){
-	res.sendFile(path.join(__dirname + '/views' + '/unosPodatakaKolegiji.html'));
 });
 
 router.get('/unosRasporeda', function(req, res){
@@ -442,6 +434,25 @@ router.get("/obrisiAktivnost/:id", (req,res,next)=>{
     })
   res.redirect('/aktivnosti');
 })
+
+//ISPIS OBAVIJESTI
+router.get('/obavijesti', function(req, res) {
+	Aktivnost.find({}).exec(function(err, aktivnosti) {   
+        if (err) throw err;
+		res.render('obavijesti.ejs', { "aktivnosti": aktivnosti });
+    });
+});
+
+//BRISANJE OBAVIJESTI
+router.get("/obrisiObavijest/:id", (req,res,next)=>{
+	var aktivnost = new Aktivnost(req.body);
+    Aktivnost.findByIdAndRemove(req.params.id ,{useFindAndModify : false}, (err, aktivnost)=> {
+       if(err) console.log(err)
+       console.log("IZBRISANA OBAVIJEST: ", aktivnost);
+    })
+  res.redirect('/obavijesti');
+})
+
 
 //SESSIONS
 router.use(function(req, res, next) {
