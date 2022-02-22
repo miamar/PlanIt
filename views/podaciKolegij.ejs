@@ -88,16 +88,16 @@
           </div>
           <div class="row" style="margin-top: 2em;"></div>
           <div class="col-sm-3 col-12 d-flex justify-content-center"> 
-            <a href="/unosIspita"><button class="btn btn-light">Unesi novi ispit ili aktivnost</button></a>
+            <a href="/unosIspita/<%= kolegij._id %>"><button class="btn btn-light">Unesi novi ispit ili aktivnost</button></a>
           </div>
           <div class="col-sm-3 col-12 d-flex justify-content-center"> 
-            <a href="/aktivnosti"><button class="btn btn-light">Pregled ispita i aktivnosti za kolegij</button></a>
+            <a href="/aktivnosti/<%= kolegij._id %>"><button class="btn btn-light">Pregled ispita i aktivnosti za kolegij</button></a>
           </div> 
           <div class="col-sm-3 col-12 d-flex justify-content-center"> 
-            <a href="/unosDolaznosti"><button class="btn btn-light">Unesi novi datum predavanja/vježbi</button></a>
+            <a href="/unosDolaznosti/<%= kolegij._id %>"><button class="btn btn-light">Unesi novi datum predavanja/vježbi</button></a>
           </div>
             <div class="col-sm-3 col-12 d-flex justify-content-center"> 
-            <a href="/dolaznost"><button class="btn btn-light">Pregled dolaznosti za kolegij</button></a>
+            <a href="/dolaznost/<%= kolegij._id %>"><button class="btn btn-light">Pregled dolaznosti za kolegij</button></a>
           </div>
         </div>
         </div>

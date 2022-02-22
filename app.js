@@ -317,15 +317,6 @@ router.get("/izbrisiKolegij/:id", (req,res,next)=>{
   res.redirect('/brisanjeKolegija');
 })
 
-//DOHVAĆANJE PODATAKA O KOLEGIJU
-router.get('/podaciKolegij', function(req, res) {
-	Kolegij.find({}).exec(function(err, kolegiji){
-		if (err) throw err;
-		//console.log(req.user.id);
-		res.render('podaciKolegij.ejs', { "kolegiji" : kolegiji });
-    });
-});
-
 //DOHVAĆANJE PODATAKA O KOLEGIJU KAD IMA ID OD TOG KOLEGIJA
 router.get('/podaciKolegij/:id', function(req, res) {
 	Kolegij.find({_id: req.params.id}).exec(function(err, kolegiji){
@@ -395,21 +386,18 @@ router.get('/unosDolaznosti', function(req, res){
 	res.sendFile(path.join(__dirname + '/views' + '/unosDolaznosti.html'));
 });
 
-
-
 //DOHVAĆANJE AKTIVNOSTI I ISPITA
-router.get('/podaciKolegij', function(req, res) {
-	Kolegij.find({}).exec(function(err, kolegiji){
+router.get('/aktivnosti/:id', function(req, res) {
+	Kolegij.find({kolegij: req.params.id}).exec(function(err, aktivnosti){
 		if (err) throw err;
-		//console.log(req.user.id);
-		res.render('podaciKolegij.ejs', { "kolegiji" : kolegiji });
+		res.render('aktivnosti.ejs', { "kolegiji" : aktivnosti});
     });
 });
 
 //UNOS AKTIVNOSTI/ISPITA
-router.post('/unosIspita', function(req, res) {
+router.post('/unosIspita/:id', function(req, res) {
 	const aktivnost = new Aktivnost({
-			//kolegij: req.kolegij.id,
+			kolegij: req.kolegij.id,
 			tipAktivnosti: req.body.tipAktivnosti,
 			nazivAktivnosti: req.body.nazivAktivnosti,
 			datumAktivnosti: req.body.datum
@@ -426,14 +414,6 @@ router.get('/unosIspita', function(req, res){
 	res.sendFile(path.join(__dirname + '/views' + '/unosIspita.html'));
 });
 
-//DOHVAĆANJE PODATAKA O AKTIVNOSTI
-router.get('/podaciKolegij', function(req, res) {
-	Aktivnost.find({user: req.user.id}).exec(function(err, aktivnosti){
-		if (err) throw err;
-		console.log(req.user.id);
-		res.render('podaciKolegij.ejs', { "aktivnosti" : aktivnosti });
-	});
-});
 
 //SESSIONS
 router.use(function(req, res, next) {
