@@ -63,19 +63,19 @@
                   	<form class="text-right" action="/urediPodatke/<%= kolegij._id %>" method="post" enctype="multipart/form-data">
                       <div class="form-group">
                             <label class="from-control">Naziv kolegija</label>
-                            <input type="text" class="form-control" name="nazivKolegija" id="nazivKolegija">
+                            <input type="text" class="form-control" name="nazivKolegija" id="nazivKolegija" value="<%= kolegij.nazivKolegija%>">
                         </div>
                         <div class="form-group">
                             <label class="from-control">Dvorana za predavanje</label>
-                            <input type="" class="form-control" name="dvoranaPredavanje" id="dvoranaPredavanje">
+                            <input type="" class="form-control" name="dvoranaPredavanje" id="dvoranaPredavanje" value="<%= kolegij.dvoranaPredavanje %>">
                         </div>
                     	<div class="form-group">
                       		<label for="dvoranaVjezbe">Dvorana za vježbe</label>
-                      		<input type="text" class="form-control" name="dvoranaVjezbe" id="dvoranaVjezbe">
+                      		<input type="text" class="form-control" name="dvoranaVjezbe" id="dvoranaVjezbe" value="<%= kolegij.dvoranaVjezbe %>">
                     	</div>
                     	<div class="form-group">
                       		<label for="modelNastave">Model nastave</label>
-                      		<input type="text" class="form-control" name="modelNastave" id="modelNastave">
+                      		<input type="text" class="form-control" name="modelNastave" id="modelNastave" value="<%= kolegij.modelNastave %>">
                     	</div>
                       <br>
                       <div class="form-group">
@@ -86,47 +86,47 @@
                       <h5>Profesor: </h5>
                       <div class="form-group">
 												<label class="from-control">Ime</label>
-												<input type="text" class="form-control" id="imeProfesora" name="imeProfesora" >
+												<input type="text" class="form-control" id="imeProfesora" name="imeProfesora" value="<%= kolegij.imeProfesora %>" >
 											</div>
 											<div class="form-group">
 												<label class="from-control">Prezime</label>
-												<input type="text" class="form-control" id="preziimeProfesora" name="prezimeProfesora">
+												<input type="text" class="form-control" id="preziimeProfesora" name="prezimeProfesora" value="<%= kolegij.prezimeProfesora %>">
 											  </div>
 										<div class="form-group">
 										  <label for="exampleInputEmail1">E-mail</label>
-										  <input type="email" class="form-control" id="emailProfesora" name="emailProfesora">
+										  <input type="email" class="form-control" id="emailProfesora" name="emailProfesora" value="<%= kolegij.dvoranaPredavanje %>">
 										</div> 
                     <div class="form-group">
                       <label for="form-control">Ured</label>
-                      <input type="text" class="form-control" id="uredProfesora" name="uredProfesora">
+                      <input type="text" class="form-control" id="uredProfesora" name="uredProfesora" value="<%= kolegij.uredProfesora %>">
                     </div>
                     <br>
                     <h5>Asistent: </h5>
                     <div class="form-group">
                       <label class="from-control">Ime</label>
-                      <input type="text" class="form-control" id="imeAsistenta" name="imeAsistenta" >
+                      <input type="text" class="form-control" id="imeAsistenta" name="imeAsistenta" value="<%= kolegij.imeAsistenta %>" >
                     </div>
                     <div class="form-group">
                       <label class="from-control">Prezime</label>
-                      <input type="text" class="form-control" id="preziimeAsistenta" name="prezimeAsistenta">
+                      <input type="text" class="form-control" id="prezimeAsistenta" name="prezimeAsistenta" value="<%= kolegij.prezimeAsistenta %>">
                       </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">E-mail</label>
-                    <input type="email" class="form-control" id="emailAsistenta" name="emailAsistenta">
+                    <input type="email" class="form-control" id="emailAsistenta" name="emailAsistenta" value="<%= kolegij.emailAsistenta %>">
                   </div> 
 									<div class="form-group">
 									  <label for="form-control">Ured</label>
-									  <input type="text" class="form-control" id="uredAsistenta" name="uredAsistenta">
+									  <input type="text" class="form-control" id="uredAsistenta" name="uredAsistenta" value="<%= kolegij.uredAsistenta %>">
 									</div>
                   <br>
                   <h5>Bodovi: </h5>
                     <div class="form-group">
                       <label class="from-control">Kolokvij:</label>
-                      <input type="text" class="form-control" id="kolokvijBodovi" name="kolokvijBodovi">
+                      <input type="text" class="form-control" id="kolokvijBodovi" name="kolokvijBodovi" value="<%= kolegij.kolokvijBodovi %>">
                     </div>
                     <div class="form-group">
                       <label class="from-control">Ostalo:</label>
-                      <input type="text" class="form-control" id="ostaloBodovi" name="ostaloBodovi">
+                      <input type="text" class="form-control" id="ostaloBodovi" name="ostaloBodovi" value="<%= kolegij.ostaloBodovi %>">
                     </div>
                       <br>
                       <button class="btn btn-success">Spremi</button>
