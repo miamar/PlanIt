@@ -308,6 +308,7 @@ router.get('/brisanjeKolegija', function(req, res) {
 		res.render('brisanjeKolegija.ejs', { "kolegiji" : kolegiji });
 	});
 });
+
 router.get("/izbrisiKolegij/:id", (req,res,next)=>{
 	var kolegij = new Kolegij(req.body);
     Kolegij.findByIdAndRemove(req.params.id ,{useFindAndModify : false}, (err, kolegij)=> {
@@ -389,7 +390,7 @@ router.post('/unosDolaznosti/:id', function(req, res) {
 	res.redirect('/podaciKolegij');
 })
 
-router.get('/unosDolaznosti', function(req, res){
+router.get('/unosDolaznosti/:id', function(req, res){
 	res.sendFile(path.join(__dirname + '/views' + '/unosDolaznosti.html'));
 });
 
