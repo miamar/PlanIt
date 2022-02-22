@@ -367,11 +367,18 @@ router.post('/urediPodatke/:id', function(req, res) {
 		});
 });
 
+//DOHVAĆANJE DOLAZNOSTI
+router.get('/dolaznost/:id', function(req, res) {
+	Kolegij.find({kolegij: req.params.id}).exec(function(err, dolaznosti){
+		if (err) throw err;
+		res.render('dolaznost.ejs', { "dolaznosti" : dolaznosti});
+    });
+});
 
 //UNOS DOLAZNOSTI
-router.post('/unosDolaznosti', function(req, res) {
+router.post('/unosDolaznosti/:id', function(req, res) {
 	const dolaznost = new Dolaznost({
-			//kolegij: req.kolegij.id,
+			kolegij: req.params.id,
 			datum: req.body.datum
 		});
 		dolaznost.save().then(data => {
@@ -390,14 +397,14 @@ router.get('/unosDolaznosti', function(req, res){
 router.get('/aktivnosti/:id', function(req, res) {
 	Kolegij.find({kolegij: req.params.id}).exec(function(err, aktivnosti){
 		if (err) throw err;
-		res.render('aktivnosti.ejs', { "kolegiji" : aktivnosti});
+		res.render('aktivnosti.ejs', { "aktivnosti" : aktivnosti});
     });
 });
 
 //UNOS AKTIVNOSTI/ISPITA
 router.post('/unosIspita/:id', function(req, res) {
 	const aktivnost = new Aktivnost({
-			kolegij: req.kolegij.id,
+			kolegij: req.params.id,
 			tipAktivnosti: req.body.tipAktivnosti,
 			nazivAktivnosti: req.body.nazivAktivnosti,
 			datumAktivnosti: req.body.datum

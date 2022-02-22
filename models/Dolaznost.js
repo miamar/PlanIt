@@ -1,8 +1,5 @@
 const mongoose = require('mongoose');
 const dolaznostSchema = mongoose.Schema({
-	/*user: {
-		type: String
-	},*/
     kolegij: {
 		type: String
 	},
